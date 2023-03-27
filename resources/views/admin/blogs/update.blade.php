@@ -68,7 +68,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Description</label>
-                                        <textarea class="form-control" rows="4" name="description">{{$blog->description}}</textarea>
+                                        <textarea class="form-control" rows="4" name="description" id="description">{{$blog->description}}</textarea>
                                     </div>
                                 </div>
 
@@ -151,6 +151,9 @@
 
 @section('script')
     <script>
+        tinymce.init({
+            selector: 'textarea#description',
+        });
         $(document).ready(function () {
             /** Get Sub category list on change on parent category */
             $('#category_id').on('change', function () {
