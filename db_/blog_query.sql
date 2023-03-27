@@ -23,15 +23,7 @@ INSERT INTO `categories` (`id`, `parent_id`, `title`, `icon`, `status`, `created
 (6, 2, 'Sub category2-2', NULL, 1, 1, NULL, '2023-03-17 06:05:24', '2023-03-17 06:05:24');
 
 
-CREATE TABLE `countries` (
-`id` int(11) NOT NULL auto_increment,
-`country_code` varchar(2) NOT NULL default '',
-`country_name` varchar(100) NOT NULL default '',
-PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
--- 
--- Dumping data for table `countries`
--- 
+
 INSERT INTO `countries` VALUES (null, 'AF', 'Afghanistan');
 INSERT INTO `countries` VALUES (null, 'AL', 'Albania');
 INSERT INTO `countries` VALUES (null, 'DZ', 'Algeria');

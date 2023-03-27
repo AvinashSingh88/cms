@@ -27,7 +27,7 @@
                                     <div class="form-group">
                                         <label>Designation</label>
                                         <input class="form-control" name="name" type="text">
-                                        <input class="form-control" name="created_by" value="Admin" type="hidden">
+                                        <input class="form-control" name="created_by" value="{{session('LoggedUser')->id}}" type="hidden">
                                     </div>
                                 </div>
                             </div>
