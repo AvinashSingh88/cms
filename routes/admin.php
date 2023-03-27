@@ -49,8 +49,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminAuthCheck'], 'as' => '
 
     /** Route for Locations */
     Route::resource('/countries', CountryController::class);
-    Route::resource('/states', StateController::class);
-    Route::resource('/cities', CityController::class);
     
     /** Route for Blog */
     Route::resource('/blogs', BlogController::class);
