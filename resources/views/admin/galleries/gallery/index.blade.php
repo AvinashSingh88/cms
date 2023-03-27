@@ -50,7 +50,7 @@
                                         <td>{{ $value->parent_name }}</td>
                                         <td>{{ $value->title }}</td>
                                         <td>
-                                            <div class="actions"> @if($value->status == 1) Active @else Inactive @endif </div>
+                                            <div class="actions"> @if($value->status == 1) <a href="#" class="btn btn-sm bg-success-light mr-2">Active</a> @else <a href="#" class="btn btn-sm bg-danger-light mr-2">Inactive</a> @endif </div>
                                         </td>
                                         <td>{{ convert_datetime_to_date_format($value->created_at, 'd M Y') }}</td>
                                         <td class="text-right">
