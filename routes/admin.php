@@ -58,6 +58,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminAuthCheck'], 'as' => '
     Route::resource('/image_categories', ImageCategoryController::class);
     Route::resource('/galleries', GalleryController::class);
 
+    /** Route For CMS Page */
     Route::resource('/pages', CmsPageController::class);
 
     Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
