@@ -165,19 +165,8 @@ class BlogController extends Controller
 
     public function fetchSubCategory(Request $request)
     {
-        $data['sub_categories'] = $this->blogRepository->getSubCategoryList($request->blog_id);
+        $data['sub_categories'] = $this->blogRepository->getSubCategoryList($request->category_id);
         return response()->json($data);
     }
 
-    public function delete_blogs(Request $request){
-        $deleted_data = $this->blogRepository->destroyBlog($request->delete_id);
-        if($deleted_data){
-            $info = array( 'status'=>'success',
-            'message'=>'Record Deleted Successfully!'
-            );
-        }else{ $info = array( 'status'=>'fail',
-            'message'=>'Some Problem Occured'
-            );
-        } echo json_encode($info);
-    }
 }

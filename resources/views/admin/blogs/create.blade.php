@@ -144,7 +144,7 @@
 @endsection
 
 @section('script')
-    <script>
+    <script type="text/javascript">
         tinymce.init({
             selector: 'textarea#description',
         });
