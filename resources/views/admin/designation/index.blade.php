@@ -90,7 +90,7 @@
                                         <td>{{ $item->name }}</td>
                                         <td>{{ convert_datetime_to_date_format($item->created_at, 'd M Y') }}</td>
                                         <td>
-                                            <div class="actions"> @if($value->status == 1) <a href="#" class="btn btn-sm bg-success-light mr-2">Active</a> @else <a href="#" class="btn btn-sm bg-danger-light mr-2">Inactive</a> @endif </div>
+                                            <div class="actions"> @if($item->status == 1) <a href="#" class="btn btn-sm bg-success-light mr-2">Active</a> @else <a href="#" class="btn btn-sm bg-danger-light mr-2">Inactive</a> @endif </div>
                                         </td>
                                         <td class="text-right">
                                             <div class="dropdown dropdown-action"> <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
