@@ -13,7 +13,7 @@ use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ImageCategoryController;
 use App\Http\Controllers\Admin\GalleryController;
-use App\Http\Controllers\Admin\CMSPageController;
+use App\Http\Controllers\Admin\CmsPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,7 +58,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminAuthCheck'], 'as' => '
     Route::resource('/image_categories', ImageCategoryController::class);
     Route::resource('/galleries', GalleryController::class);
 
-    Route::resource('/pages', CMSPageController::class);
+    Route::resource('/pages', CmsPageController::class);
 
     Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 

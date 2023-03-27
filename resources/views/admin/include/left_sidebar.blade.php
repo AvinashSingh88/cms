@@ -35,7 +35,7 @@
 						<li class="submenu"> <a href="#"><i class="fas fa-calculator"></i> <span> Manage CMS </span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
 								<li><a href="{{ url('admin/pages') }}"> All CMS Pages </a></li>
-								<li><a href="{{ url('admin/pages/create') }}"> Add New Blog </a></li>
+								<li><a href="{{ url('admin/pages/create') }}"> Add New CMS Page </a></li>
                             </ul>
 						</li>
 
