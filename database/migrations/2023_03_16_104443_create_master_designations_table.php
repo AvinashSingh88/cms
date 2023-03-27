@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('master_designations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('body');
+            $table->text('body')->nullable();
             $table->boolean('status')->default(1);
             $table->bigInteger('created_by')->nullable();
             $table->bigInteger('updated_by')->nullable();
