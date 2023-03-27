@@ -19,11 +19,11 @@
 							</ul>
 						</li>
 
-                        <li class="submenu"> <a href="#"><i class="fas fa-calculator"></i> <span>Manage Locations </span> <span class="menu-arrow"></span></a>
+                        <!-- <li class="submenu"> <a href="#"><i class="fas fa-calculator"></i> <span>Manage Locations </span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
 								<li><a href="">Countries</a></li>
 							</ul>
-						</li>
+						</li> -->
 
 						<li class="submenu"> <a href="#"><i class="fas fa-calculator"></i> <span> Manage Galleries </span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
