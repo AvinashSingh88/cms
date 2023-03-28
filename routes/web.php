@@ -21,4 +21,11 @@ use App\Http\Controllers\Frontend\CommonController;
 
 // Route::get('/', [LoginController::class, 'login'])->name('admin.auth.login')->middleware('AlreadyLoggedIn');
 Route::get('/', [CommonController::class, 'index'])->name('index');
+Route::get('index', [CommonController::class, 'index'])->name('index');
+Route::get('about', [CommonController::class, 'about_us'])->name('about');
+Route::get('contact', [CommonController::class, 'contact_us'])->name('contact');
+Route::get('testimonial', [CommonController::class, 'testimonial'])->name('testimonial');
+
+Route::get('login', [CommonController::class, 'contact_us'])->name('contact');
+Route::get('signup', [CommonController::class, 'contact_us'])->name('contact');
 
