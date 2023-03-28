@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ImageCategoryController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\CmsPageController;
+use App\Http\Controllers\Admin\TestimonialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +61,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminAuthCheck'], 'as' => '
 
     /** Route For CMS Page */
     Route::resource('/pages', CmsPageController::class);
+
+    Route::resource('/testimonials', TestimonialController::class);
 
     Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 

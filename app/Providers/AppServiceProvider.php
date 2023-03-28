@@ -25,6 +25,9 @@ use App\Repositories\GalleryRepository;
 use App\Repositories\Interfaces\CmsPageRepositoryInterface;
 use App\Repositories\CmsPageRepository;
 
+use App\Repositories\Interfaces\TestimonialRepositoryInterface;
+use App\Repositories\TestimonialRepository;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -45,6 +48,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(GalleryRepositoryInterface::class, GalleryRepository::class);
         
         $this->app->bind(CmsPageRepositoryInterface::class, CmsPageRepository::class);
+
+        $this->app->bind(TestimonialRepositoryInterface::class, TestimonialRepository::class);
     }
 
     /**
