@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Frontend\CommonController;
+use App\Http\Controllers\Frontend\WebCommonController;
 
 
 /*
@@ -20,12 +20,13 @@ use App\Http\Controllers\Frontend\CommonController;
 // });
 
 // Route::get('/', [LoginController::class, 'login'])->name('admin.auth.login')->middleware('AlreadyLoggedIn');
-Route::get('/', [CommonController::class, 'index'])->name('index');
-Route::get('index', [CommonController::class, 'index'])->name('index');
-Route::get('about', [CommonController::class, 'about_us'])->name('about');
-Route::get('contact', [CommonController::class, 'contact_us'])->name('contact');
-Route::get('testimonial', [CommonController::class, 'testimonial'])->name('testimonial');
+Route::get('/', [WebCommonController::class, 'index'])->name('index');
+Route::get('index', [WebCommonController::class, 'index'])->name('index');
+Route::get('about', [WebCommonController::class, 'about_us'])->name('about');
+Route::get('contact', [WebCommonController::class, 'contact_us'])->name('contact');
+Route::get('testimonial', [WebCommonController::class, 'testimonial'])->name('testimonial');
+Route::get('gallery', [WebCommonController::class, 'gallery'])->name('gallery');
 
-Route::get('login', [CommonController::class, 'contact_us'])->name('contact');
-Route::get('signup', [CommonController::class, 'contact_us'])->name('contact');
+Route::get('login', [WebCommonController::class, 'contact_us'])->name('contact');
+Route::get('signup', [WebCommonController::class, 'contact_us'])->name('contact');
 
