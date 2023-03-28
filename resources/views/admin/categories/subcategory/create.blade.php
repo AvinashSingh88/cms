@@ -57,7 +57,7 @@
                                         <label>Status </label>
                                         <select class=" form-control" id="status" name="status" required>
                                             <option value="1" selected>Active</option>
-                                            <option value="0">Inactive</option>
+                                            <option value="2">Inactive</option>
                                         </select> 
                                     </div>
                                 </div>

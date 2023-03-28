@@ -58,7 +58,7 @@
                                         <label>Status </label>
                                         <select class=" form-control" id="status" name="status" required>
                                             <option value="1" @if($subcategory->status == 1) selected @endif>Active</option>
-                                            <option value="0" @if($subcategory->status == 0) selected @endif>Inactive</option>
+                                            <option value="2" @if($subcategory->status == 2) selected @endif>Inactive</option>
                                         </select> 
                                     </div>
                                 </div>
