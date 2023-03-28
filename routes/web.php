@@ -26,6 +26,7 @@ Route::get('contact', [WebCommonController::class, 'contact_us'])->name('contact
 Route::get('testimonial', [WebCommonController::class, 'testimonial'])->name('testimonial');
 Route::get('gallery', [WebCommonController::class, 'gallery'])->name('gallery');
 Route::get('blogs', [WebCommonController::class, 'blogListing'])->name('blogs');
+Route::get('blog_detail/{slug}', [WebCommonController::class, 'blogDetail'])->name('blog.detail');
 
 Route::get('login', [WebCommonController::class, 'contact_us'])->name('contact');
 Route::get('signup', [WebCommonController::class, 'contact_us'])->name('contact');

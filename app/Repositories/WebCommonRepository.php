@@ -31,11 +31,16 @@ class WebCommonRepository implements WebCommonRepositoryInterface
     }
 
     public function getBlogs(){
-        return Blog::select('*')->where('status', 1)->get();
+        $blogs = Blog::select('blogs.*', 'cat.title as parent_name', 'sub_cat.title as sub_category_name', 'user.first_name')
+            ->leftJoin('categories as cat', 'cat.id', '=', 'blogs.category_id')
+            ->leftJoin('categories as sub_cat', 'sub_cat.id', '=', 'blogs.sub_category_id')
+            ->leftJoin('users as user', 'user.id', '=', 'blogs.created_by')
+            ->latest()->paginate(15);
+        return $blogs;
     }
 
-    public function getBlogDetail($id){
-        return Blog::select('*')->where('status', 1)->where('id', $id)->first();
+    public function getBlogDetail($slug){
+        return Blog::select('*')->where('status', 1)->where('slug', $slug)->first();
     }
 
 }

@@ -9,5 +9,5 @@ Interface WebCommonRepositoryInterface{
     public function getTestimonial();
     public function getGallery();
     public function getBlogs();
-    public function getBlogDetail($id);
+    public function getBlogDetail($slug);
 }

@@ -45,8 +45,8 @@ class WebCommonController extends Controller
         return view('frontend.blogs', compact('blogs'));
     }
 
-    public function blogDetail($id){
-        $blog = $this->webRepository->getBlogDetail($id);
+    public function blogDetail($slug){
+        $blog = $this->webRepository->getBlogDetail($slug);
         return view('frontend.blog_detail', compact('blog'));
     }
 
