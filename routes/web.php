@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Frontend\CommonController;
 
 
 /*
@@ -19,5 +19,6 @@ use App\Http\Controllers\Admin\LoginController;
 //     return view('welcome');
 // });
 
-Route::get('/', [LoginController::class, 'login'])->name('admin.auth.login')->middleware('AlreadyLoggedIn');
+// Route::get('/', [LoginController::class, 'login'])->name('admin.auth.login')->middleware('AlreadyLoggedIn');
+Route::get('/', [CommonController::class, 'index'])->name('index');
 
