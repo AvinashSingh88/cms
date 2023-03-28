@@ -1,4 +1,3 @@
-
 @extends('frontend.layouts.master');
 @section('title') {{$data->title}} @endsection
 
@@ -7,7 +6,6 @@
   <meta name="keywords" content="$data->meta_tag">
   <meta name="description" content="$data->meta_description">
 @endsection 
-
 
 @section('content')
 
@@ -328,6 +326,6 @@
         </div>
       </div>
     </section>
-  </main>
+  </main>-->
 
-@endsection -->
+@endsection 
