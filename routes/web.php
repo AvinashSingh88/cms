@@ -19,13 +19,13 @@ use App\Http\Controllers\Frontend\WebCommonController;
 //     return view('welcome');
 // });
 
-// Route::get('/', [LoginController::class, 'login'])->name('admin.auth.login')->middleware('AlreadyLoggedIn');
 Route::get('/', [WebCommonController::class, 'index'])->name('index');
 Route::get('index', [WebCommonController::class, 'index'])->name('index');
 Route::get('about', [WebCommonController::class, 'about_us'])->name('about');
 Route::get('contact', [WebCommonController::class, 'contact_us'])->name('contact');
 Route::get('testimonial', [WebCommonController::class, 'testimonial'])->name('testimonial');
 Route::get('gallery', [WebCommonController::class, 'gallery'])->name('gallery');
+Route::get('blogs', [WebCommonController::class, 'blogListing'])->name('blogs');
 
 Route::get('login', [WebCommonController::class, 'contact_us'])->name('contact');
 Route::get('signup', [WebCommonController::class, 'contact_us'])->name('contact');
