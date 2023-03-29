@@ -45,9 +45,15 @@ class WebCommonController extends Controller
         return view('frontend.blogs', compact('blogs'));
     }
 
+    public function blogSlugListing($cat_slug){
+        // dd($slug);
+        $blogs = $this->webRepository->getBlogs($cat_slug);
+        return view('frontend.blogs', compact('blogs'));
+    }
+
     public function blogDetail($slug){
-        $blog = $this->webRepository->getBlogDetail($slug);
-        return view('frontend.blog_detail', compact('blog'));
+        $data = $this->webRepository->getBlogDetail($slug);
+        return view('frontend.blog_detail', compact('data'));
     }
 
 

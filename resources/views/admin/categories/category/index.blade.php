@@ -53,11 +53,7 @@
                                         <td>{{ convert_datetime_to_date_format($value->created_at, 'd M Y') }}</td>
                                         <td class="text-right">
                                             <div class="dropdown dropdown-action"> 
-                                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="{{ route('admin.categories.edit',$value->id) }}"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#Inactive_asset"><i class="fas fa-trash m-r-5"></i> Delete</a> 
-                                                </div>
+                                                <a class="dropdown-item" href="{{ route('admin.categories.edit',$value->id) }}"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a>
                                             </div>
                                         </td>
                                     </tr>

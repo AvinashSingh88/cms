@@ -8,6 +8,6 @@ Interface WebCommonRepositoryInterface{
     public function getContactus();
     public function getTestimonial();
     public function getGallery();
-    public function getBlogs();
+    public function getBlogs($slug);
     public function getBlogDetail($slug);
 }
