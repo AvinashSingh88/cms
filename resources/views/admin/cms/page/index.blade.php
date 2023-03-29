@@ -4,18 +4,13 @@
 
 <div class="page-wrapper">
     <div class="content container-fluid">
-
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
                     <a class="btn btn-primary float-right" href="{{ url('admin/pages/create') }}">Add New CMS Page</a>
-
                     <div class="breadcrumb mt-3 border-bottom pb-2">
                         <a href="{{ url('') }}"><i class="fa fa-home" aria-hidden="true"></i> Home</a>/CMS Page
                     </div>
-                    <!-- <div class="mt-2">
-                        <h4 class="card-title float-left mt-2">Blogs</h4>
-                    </div> -->
                 </div>
             </div>
         </div>

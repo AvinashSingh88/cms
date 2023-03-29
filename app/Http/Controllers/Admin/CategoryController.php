@@ -36,6 +36,11 @@ class CategoryController extends Controller
         return view('admin.categories.category.create');
     }
 
+    public function generateSlug()
+    {
+        $this->slug = SlugService::createSlug(Category::class, 'slug', $this->title);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -45,7 +50,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'title' => 'required|string|max:255',
+            'title' => 'required|unique:categories|string|max:255',
             'status' => 'required',
         ]);
 

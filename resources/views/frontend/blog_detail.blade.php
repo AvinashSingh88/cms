@@ -2,9 +2,9 @@
 @section('title') Blog Detail @endsection
 
 @section('meta_tags')
-  <meta name="title" content="{{$blog->meta_title}}">
-  <meta name="keywords" content="$blog->meta_tag">
-  <meta name="description" content="$blog->meta_description">
+  <meta name="title" content="{{$data['blog']->meta_title}}">
+  <meta name="keywords" content="$data['blog']->meta_tag">
+  <meta name="description" content="$data['blog']->meta_description">
 @endsection 
 
 @section('content')
@@ -20,32 +20,17 @@
 
                 <div class="row">
                     <div class="col-lg-8">
-                        <img src="{{$blog->blog_image}}" class="img-fluid" alt="">
-                        <h3>{{$blog->title}}</h3>
-                        <p> {!! $blog->description !!} </p>
+                        <img src="{{$data['blog']->blog_image}}" class="img-fluid" alt="">
+                        <h3>{{$data['blog']->title}}</h3>
+                        <p> {!! $data['blog']->description !!} </p>
                     </div>
                     
                     <div class="col-lg-4">
-                        <div class="course-info d-flex justify-content-between align-items-center">
-                            <h5>Trainer</h5>
-                            <p><a href="#">Walter White</a></p>
-                        </div>
-
-                        <div class="course-info d-flex justify-content-between align-items-center">
-                            <h5>Course Fee</h5>
-                            <p>$165</p>
-                        </div>
-
-                        <div class="course-info d-flex justify-content-between align-items-center">
-                            <h5>Available Seats</h5>
-                            <p>30</p>
-                        </div>
-
-                        <div class="course-info d-flex justify-content-between align-items-center">
-                            <h5>Schedule</h5>
-                            <p>5.00 pm - 7.00 pm</p>
-                        </div>
-
+                        @foreach($data['sub_category_list'] AS $key => $value)
+                            <div class="course-info d-flex justify-content-between align-items-center">
+                                <h5><a href="{{ route('blogs.slug',$value->slug) }}">{{$value->title}}</a></h5>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
