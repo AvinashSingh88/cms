@@ -7,29 +7,42 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use App\Models\User;
+use App\Models\UserLogin;
 use Hash;
 use Validator;
 
 class AuthController extends Controller
 {
-    public function index(){
+
+    /** Customer Login page start */
+    public function login(){
         return view('frontend.auth.login');
     } 
 
     public function postLogin(Request $request){
-        $request->validate([
-            'email' => 'required',
+        $data = $request->validate([
+            'username' => 'required',
             'password' => 'required',
         ]);
-   
-        $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard')
-                        ->withSuccess('You have Successfully loggedin');
-        }
-        return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
-    }
 
+        $is_loggedin = UserLogin::where([
+            'username' => $request->username,
+            'password' => $request->password,
+            'user_type_id' => 3,
+            'status' => 1,
+        ])->first();
+
+        if (!$is_loggedin) {
+            return redirect()->route('login')->with(session()->flash('alert-warning', 'Failed! We do not recognize your username.'));
+        } else  {
+            $request->session()->put('LoggedCustomer', $is_loggedin);
+            return redirect('index');
+        }
+    }
+    /** Customer Login page start */
+
+
+    /** Customer Registration page start */
     public function registration(){
         return view('frontend.auth.register');
     }
@@ -46,6 +59,14 @@ class AuthController extends Controller
            
         $data = $request->all();
         $check = $this->create($data);
+        if($check){
+            $user_login = UserLogin::create([
+                'username' => $data['email'],
+                'password' => $data['password'],
+                'user_id' => $check->id,
+                'status' => 1,
+            ]);
+        }
          
         return redirect("index")->withSuccess('Great! You have Successfully loggedin');
     }
@@ -56,12 +77,12 @@ class AuthController extends Controller
             'last_name' => $data['last_name'],
             'mobile' => $data['mobile'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
             'status' => 1,
             'user_type_id' => 3,
             'user_designation_id' => 2,
         ]);
     }
+    /** Customer Registration page End */
 
     public function logout() {
         Session::flush();

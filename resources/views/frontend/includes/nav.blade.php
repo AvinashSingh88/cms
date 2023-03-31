@@ -18,8 +18,16 @@
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="{{ url('login') }}" class="get-started-btn">Login</a>
-      <a href="{{ url('signup') }}" class="get-started-btn">Signup</a>
-
+      @if (Route::has('login'))
+        @if(LoggedCustomer->id)
+        <li><a class="active" href="{{ url('index') }}">Home</a></li>
+        @else
+        <a href="{{ url('login') }}" class="get-started-btn">Login</a>
+        
+            @if (Route::has('register'))
+              <a href="{{ url('register') }}" class="get-started-btn">Register</a>
+            @endif
+        @endif
+      @endif
     </div>
   </header><!-- End Header -->
