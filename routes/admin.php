@@ -58,9 +58,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminAuthCheck'], 'as' => '
     /** Route For Gallery */
     Route::resource('/image_categories', ImageCategoryController::class);
     Route::resource('/galleries', GalleryController::class);
-
+    
     /** Route For CMS Page */
     Route::resource('/pages', CmsPageController::class);
+    Route::get('/customer/leads', [CmsPageController::class, 'customerLeadList'])->name('customer.leads');
 
     Route::resource('/testimonials', TestimonialController::class);
 

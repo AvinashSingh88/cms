@@ -129,5 +129,10 @@ class CmsPageController extends Controller
         return redirect()->route('admin.pages.index')->with('message', 'CmsPage Updated Successfully');
     }
 
+    public function customerLeadList()
+    {
+        $leads =  $this->cmsPageRepository->allCustomerLeadList();
+        return view('admin.cms.customer_lead', compact('leads'));
+    }
 
 }

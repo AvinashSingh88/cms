@@ -3,12 +3,13 @@ namespace App\Repositories;
 use App\Repositories\Interfaces\CmsPageRepositoryInterface;
 use App\Models\CmsPage;
 use App\Models\Menu;
+use App\Models\CustomerLead;
 
 class CmsPageRepository implements CmsPageRepositoryInterface
 {
     public function allCmsPages()
     {
-        $pages = CmsPage::select('cms_pages.*', )
+        $pages = CmsPage::select('cms_pages.*')
             ->latest()->paginate(10);
         return $pages;
     }
@@ -56,6 +57,12 @@ class CmsPageRepository implements CmsPageRepositoryInterface
         $page->meta_description = $data['meta_description'];
         $page->updated_by = $data['updated_by'];
         $page->save();
+    }
+
+    public function allCustomerLeadList()
+    {
+        $leads = CustomerLead::select('*')->latest()->paginate(10);
+        return $leads;
     }
 
 }

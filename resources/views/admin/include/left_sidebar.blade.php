@@ -46,6 +46,12 @@
                             </ul>
 						</li>
 
+						<li class="submenu"> <a href="#"><i class="fas fa-calculator"></i> <span> Manage Customer Leads </span> <span class="menu-arrow"></span></a>
+							<ul class="submenu_class" style="display: none;">
+								<li><a href="{{ url('admin/customer/leads') }}"> All Customer Leads </a></li>
+                            </ul>
+						</li>
+
 					</ul>
 				</div>
 			</div>

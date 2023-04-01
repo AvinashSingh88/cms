@@ -9,4 +9,5 @@ Interface CmsPageRepositoryInterface{
     public function storeCmsPage($request, $data);
     public function findCmsPage($id);
     public function updateCmsPage($data, $id); 
+    public function allCustomerLeadList();
 }
