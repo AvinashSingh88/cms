@@ -31,6 +31,18 @@ class WebCommonController extends Controller
         return view('frontend.contact_us', compact('data'));
     }
 
+    public function postContactEnquiry(Request $request){
+        $data = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'subject' => 'required',
+            'message' => 'required',
+        ]);
+        $this->webRepository->storeContactEnquiry($data);
+        
+        return redirect("contact")->withSuccess('Thankyou contacting with us. Our Team will help you soon...');
+    }
+
     public function testimonial(){
         $testimonials = $this->webRepository->getTestimonial();
         return view('frontend.testimonial', compact('testimonials'));

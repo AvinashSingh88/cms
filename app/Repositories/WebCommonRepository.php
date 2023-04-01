@@ -6,6 +6,7 @@ use App\Models\Testimonial;
 use App\Models\Gallery;
 use App\Models\Category;
 use App\Models\Blog;
+use App\Models\CustomerLead;
 
 class WebCommonRepository implements WebCommonRepositoryInterface
 {
@@ -20,6 +21,11 @@ class WebCommonRepository implements WebCommonRepositoryInterface
 
     public function getContactus(){
         return CmsPage::select('*')->where('title', 'Contact')->first();
+    }
+
+    public function storeContactEnquiry($data)
+    {
+        return CustomerLead::create($data);
     }
 
     public function getTestimonial(){

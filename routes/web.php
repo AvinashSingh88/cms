@@ -33,6 +33,7 @@ Route::get('/', [WebCommonController::class, 'index'])->name('index');
 Route::get('index', [WebCommonController::class, 'index'])->name('index');
 Route::get('about', [WebCommonController::class, 'about_us'])->name('about');
 Route::get('contact', [WebCommonController::class, 'contact_us'])->name('contact');
+Route::post('contact/enquiry', [WebCommonController::class, 'postContactEnquiry'])->name('contact.enquiry');
 Route::get('testimonial', [WebCommonController::class, 'testimonial'])->name('testimonial');
 Route::get('gallery', [WebCommonController::class, 'gallery'])->name('gallery');
 Route::get('blogs', [WebCommonController::class, 'blogListing'])->name('blogs');
