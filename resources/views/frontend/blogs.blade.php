@@ -31,7 +31,15 @@
                                     <span>{{$value->first_name}}</span>
                                 </div>
                                 <div class="trainer-rank d-flex align-items-center">
-                                    <i class="bx bx-heart"></i>&nbsp;50
+                                    @if(session('LoggedCustomer'))
+                                        <a class="like_btn"> 
+                                            <i class="bx bx-heart"></i> 
+                                            <div data-userId="{{session('LoggedCustomer')->id}}" data-blogId="{{$value->id}}"></div>
+                                        </a>
+                                    @else
+                                        <a href="{{ url('login') }}"><i class="bx bx-heart"></i></a>
+                                    @endif
+                                    &nbsp;50
                                     &nbsp;&nbsp;
                                     <i class="bx bx-comment"></i>&nbsp;65
                                 </div>
@@ -45,5 +53,22 @@
     </section>
   </main>
 
+  @endseection
+  @section('script')
+  <script type="text/javascript">
+    $(".like_btn").click(function (event) {
+        event.preventDefault();
 
+        var blog_id = $(this).data("blogid");
+        var user_id = $(this).data("userid");
+
+        console.log(blog_id);
+        console.log(user_id);
+        console.log("Clicked function");
+        alert("I am clicked");
+
+       
+    })
+</script>
 @endsection
+
