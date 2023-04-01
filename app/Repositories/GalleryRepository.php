@@ -11,7 +11,7 @@ class GalleryRepository implements GalleryRepositoryInterface
     public function allGallery()
     {
         $galleries = Gallery::select('galleries.*', 'cat.title as parent_name')
-            ->leftJoin('categories as cat', 'cat.id', '=', 'galleries.category_id')
+            ->leftJoin('image_categories as cat', 'cat.id', '=', 'galleries.category_id')
             ->latest()->paginate(10);
         return $galleries;
     }

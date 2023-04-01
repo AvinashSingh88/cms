@@ -26,8 +26,9 @@ class WebCommonController extends Controller
     }
 
     public function contact_us(){
+        // $route = Route::current();
         $data = $this->webRepository->getContactus();
-        return view('frontend.index', compact('data'));
+        return view('frontend.contact_us', compact('data'));
     }
 
     public function testimonial(){
