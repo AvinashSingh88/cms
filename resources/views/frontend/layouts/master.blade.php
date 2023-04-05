@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    @include('frontend.includes.header');
+    @include('frontend.includes.header')
     <body>
-        @include('frontend.includes.nav');
+        @include('frontend.includes.nav')
         
         @yield('content')
         
-        @include('frontend.includes.footer');
+        @include('frontend.includes.footer')
+        @yield('script')
 
     </body>
 </html>

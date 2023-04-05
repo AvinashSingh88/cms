@@ -1,4 +1,4 @@
-@extends('frontend.layouts.master');
+@extends('frontend.layouts.master')
 @section('title') Blogs @endsection
 
 @section('content')
@@ -32,16 +32,22 @@
                                 </div>
                                 <div class="trainer-rank d-flex align-items-center">
                                     @if(session('LoggedCustomer'))
-                                        <a class="like_btn"> 
-                                            <i class="bx bx-heart"></i> 
-                                            <div data-userId="{{session('LoggedCustomer')->id}}" data-blogId="{{$value->id}}"></div>
+                                        <a class="like_btn" data-userId="{{session('LoggedCustomer')->id}}" data-blogId="{{$value->id}}"> 
+                                            <i class="heart_class @if($value->is_liked == 0) bx bx-heart @else fa fa-heart @endif">
+                                                <div class="show_total_like">{{$value->total_like}}</div>
+                                            </i> 
                                         </a>
                                     @else
-                                        <a href="{{ url('login') }}"><i class="bx bx-heart"></i></a>
+                                        <a href="{{ url('login') }}">
+                                            <i class="bx bx-heart">
+                                                <div class="show_total_like">{{$value->total_like}}</div>
+                                            </i>
+                                        </a>
+                                        
                                     @endif
-                                    &nbsp;50
+                                    
                                     &nbsp;&nbsp;
-                                    <i class="bx bx-comment"></i>&nbsp;65
+                                    <i class="bx bx-comment"></i>&nbsp;{{$value->total_comment}}
                                 </div>
                             </div>
                         </div>
@@ -53,22 +59,40 @@
     </section>
   </main>
 
-  @endseection
+  @endsection
   @section('script')
-  <script type="text/javascript">
-    $(".like_btn").click(function (event) {
-        event.preventDefault();
+    <script type="text/javascript">
+        $(".like_btn").click(function (event) {
+            event.preventDefault();
+            var blog_id = $(this).data("blogid");
+            var user_id = $(this).data("userid");
 
-        var blog_id = $(this).data("blogid");
-        var user_id = $(this).data("userid");
+            $.ajax({
+                url: "{{url('blog/action')}}",
+                type: "POST",
+                data: {
+                    blog_id: blog_id,
+                    user_id: user_id,
+                    _token: '{{csrf_token()}}'
+                },
+                dataType: 'json',
 
-        console.log(blog_id);
-        console.log(user_id);
-        console.log("Clicked function");
-        alert("I am clicked");
+                success: function (result) {
+                    if(result.status == 1){
+                        $(event.target).removeClass('bx bx-heart');
+                        $(event.target).addClass('fa fa-heart');
+                    }else{
+                        $(event.target).removeClass('fa fa-heart');
+                        $(event.target).addClass('bx bx-heart');                        
+                    }
+                    var like_html = '<div class="show_total_like">'+ result.total_like +'</div>';
+                    $(event.target).html(like_html);
+                    
+                }
+            });
 
-       
-    })
-</script>
+        
+        })
+    </script>
 @endsection
 

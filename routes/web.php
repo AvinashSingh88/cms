@@ -16,6 +16,15 @@ use App\Http\Controllers\Frontend\WebCommonController;
 |
 */
 
+Route::get('/clear-cache', function () {
+    Artisan::call('cache:clear');
+    Artisan::call('config:cache');
+    Artisan::call('config:clear');
+    Artisan::call('view:clear');
+    Artisan::call('route:clear');
+    return "Cache is cleared by @AviSingh";
+});
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -28,7 +37,6 @@ Route::post('post-registration', [AuthController::class, 'postRegistration'])->n
 Route::get('dashboard', [AuthController::class, 'dashboard']); 
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
-
 Route::get('/', [WebCommonController::class, 'index'])->name('index');
 Route::get('index', [WebCommonController::class, 'index'])->name('index');
 Route::get('about', [WebCommonController::class, 'about_us'])->name('about');
@@ -39,5 +47,7 @@ Route::get('gallery', [WebCommonController::class, 'gallery'])->name('gallery');
 Route::get('blogs', [WebCommonController::class, 'blogListing'])->name('blogs');
 Route::get('blogs/{slug}', [WebCommonController::class, 'blogSlugListing'])->name('blogs.slug');
 Route::get('blog_detail/{slug}', [WebCommonController::class, 'blogDetail'])->name('blog.detail');
+Route::post('blog/action', [WebCommonController::class, 'blogAction'])->name('blog.action');
+
 
 

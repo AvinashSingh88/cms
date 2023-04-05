@@ -69,5 +69,17 @@ class WebCommonController extends Controller
         return view('frontend.blog_detail', compact('data'));
     }
 
+    public function blogAction(Request $request){
+        $data = $request->validate([
+            'blog_id' => 'required',
+            'user_id' => 'required',
+        ]);
+
+        $response = $this->webRepository->applyBlogAction($data);
+        
+        return response($response);
+    
+    }
+
 
 }

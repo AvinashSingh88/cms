@@ -80,4 +80,4 @@
 
   <!-- Template Main JS File -->
   <script src="{{ asset('assets/assets_web/js/main.js')}}"></script>
-  @yield('script')
+ 

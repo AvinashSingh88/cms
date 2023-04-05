@@ -11,4 +11,5 @@ Interface WebCommonRepositoryInterface{
     public function getGallery();
     public function getBlogs($slug);
     public function getBlogDetail($slug);
+    public function applyBlogAction($data);
 }
