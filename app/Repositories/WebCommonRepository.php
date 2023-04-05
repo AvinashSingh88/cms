@@ -7,6 +7,7 @@ use App\Models\Gallery;
 use App\Models\Category;
 use App\Models\Blog;
 use App\Models\BlogLike;
+use App\Models\BlogComment;
 use App\Models\CustomerLead;
 
 class WebCommonRepository implements WebCommonRepositoryInterface
@@ -107,12 +108,37 @@ class WebCommonRepository implements WebCommonRepositoryInterface
             $update_blog->save();
         }
 
-        $get_blog = BlogLike::select('blog_likes.*', 'blogs.total_like', 'total_comment')
+        $get_blog = BlogLike::select('blog_likes.*', 'blogs.total_like', 'blogs.total_comment')
             ->leftJoin('blogs', 'blog_likes.blog_id', '=', 'blogs.id')
             ->where('blog_likes.blog_id', $data['blog_id'])
             ->where('blog_likes.user_id', $data['user_id'])
             ->first();
 
+        return $get_blog;
+    }
+
+    public function storeBlogComment($data){
+        $blog = new BlogComment();
+        $blog->user_id = session('LoggedCustomer')->id;
+        $blog->blog_id = $data['blog_id'];
+        $blog->comment = $data['comment'];
+        $blog->status = 1;
+        if($blog->save()){
+            $update_blog = Blog::find($data['blog_id']);
+            if($blog->status == 1){
+                $update_blog->total_comment += 1;
+            }
+            $update_blog->save();
+        }
+
+    }
+
+    public function getBlogComments($blog_id){
+        $get_blog = BlogComment::select('blog_comments.*', 'blogs.total_comment')
+            ->leftJoin('blogs', 'blog_comments.blog_id', '=', 'blogs.id')
+            ->where('blog_comments.blog_id', $blog_id)
+            ->latest()
+            ->get();
         return $get_blog;
     }
 

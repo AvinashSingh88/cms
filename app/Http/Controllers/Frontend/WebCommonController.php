@@ -26,7 +26,6 @@ class WebCommonController extends Controller
     }
 
     public function contact_us(){
-        // $route = Route::current();
         $data = $this->webRepository->getContactus();
         return view('frontend.contact_us', compact('data'));
     }
@@ -59,7 +58,6 @@ class WebCommonController extends Controller
     }
 
     public function blogSlugListing($cat_slug){
-        // dd($slug);
         $blogs = $this->webRepository->getBlogs($cat_slug);
         return view('frontend.blogs', compact('blogs'));
     }
@@ -76,9 +74,26 @@ class WebCommonController extends Controller
         ]);
 
         $response = $this->webRepository->applyBlogAction($data);
-        
         return response($response);
-    
+    }
+
+    public function storeBlogComment(Request $request){
+        $data = $request->validate([
+            'blog_id' => 'required',
+            'comment' => 'required',
+        ]);
+
+        $response = $this->webRepository->storeBlogComment($data);
+        return response($response);
+    }
+
+    public function showBlogComments(Request $request){
+        $data = $request->validate([
+            'blog_id' => 'required',
+        ]);
+
+        $response = $this->webRepository->getBlogComments($request->blog_id);
+        return response($response);
     }
 
 

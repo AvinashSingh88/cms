@@ -48,6 +48,8 @@ Route::get('blogs', [WebCommonController::class, 'blogListing'])->name('blogs');
 Route::get('blogs/{slug}', [WebCommonController::class, 'blogSlugListing'])->name('blogs.slug');
 Route::get('blog_detail/{slug}', [WebCommonController::class, 'blogDetail'])->name('blog.detail');
 Route::post('blog/action', [WebCommonController::class, 'blogAction'])->name('blog.action');
+Route::post('blog/store_comment', [WebCommonController::class, 'storeBlogComment'])->name('blog.store_comment');
+Route::get('blog/show_comments', [WebCommonController::class, 'showBlogComments'])->name('blog.show_comments');
 
 
 
