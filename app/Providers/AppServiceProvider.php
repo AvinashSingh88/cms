@@ -8,6 +8,8 @@ use App\Repositories\Interfaces\LoginRepositoryInterface;
 use App\Repositories\LoginRepository;
 use App\Repositories\Interfaces\DesignationRepositoryInterface;
 use App\Repositories\DesignationRepository;
+use App\Repositories\Interfaces\AdminRepositoryInterface;
+use App\Repositories\AdminRepository;
 use App\Repositories\Interfaces\CategoryRepositoryInterface;
 use App\Repositories\CategoryRepository;
 use App\Repositories\Interfaces\SubCategoryRepositoryInterface;
@@ -36,6 +38,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(LoginRepositoryInterface::class, LoginRepository::class);
+        $this->app->bind(AdminRepositoryInterface::class, AdminRepository::class);
         $this->app->bind(DesignationRepositoryInterface::class, DesignationRepository::class);
         $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
         $this->app->bind(SubCategoryRepositoryInterface::class, SubCategoryRepository::class);
