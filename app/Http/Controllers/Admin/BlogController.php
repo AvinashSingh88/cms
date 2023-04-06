@@ -164,6 +164,11 @@ class BlogController extends Controller
         return view('admin.blogs.comment', compact('blogs'));
     }
 
+    public function showLikes($id){
+        $blogs = $this->blogRepository->getAllLike($id);
+        return view('admin.blogs.like', compact('blogs'));
+    }
+
     public function changeCommentStatus(Request $request){
         $comment = $this->blogRepository->setCommentStatus($request);
         return response()->json($comment);

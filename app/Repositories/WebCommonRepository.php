@@ -122,7 +122,7 @@ class WebCommonRepository implements WebCommonRepositoryInterface
         $blog->user_id = session('LoggedCustomer')->user_id;
         $blog->blog_id = $data['blog_id'];
         $blog->comment = $data['comment'];
-        $blog->status = 1;
+        $blog->status = 0;
         if($blog->save()){
             $update_blog = Blog::find($data['blog_id']);
             if($blog->status == 1){

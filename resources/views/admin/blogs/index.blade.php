@@ -59,7 +59,9 @@
                                             <div class="dropdown dropdown-action"> <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     <a class="dropdown-item" href="{{ route('admin.blogs.edit',$value->id) }}"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a>
-                                                    <a class="dropdown-item" href="{{ route('admin.blogs.show_comments',$value->id) }}"><i class="fas fa-comment m-r-5"></i> Comment</a> </div>
+                                                    <a class="dropdown-item" target="_blank" href="{{ route('admin.blogs.show_likes',$value->id) }}"><i class="fas fa-thumbs-up m-r-5"></i> Show Likes</a> 
+                                                    <a class="dropdown-item" target="_blank" href="{{ route('admin.blogs.show_comments',$value->id) }}"><i class="fas fa-comment m-r-5"></i> Show Comments</a> 
+                                                </div>
                                             </div>
                                         </td>
                                     </tr>

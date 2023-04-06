@@ -1,5 +1,5 @@
 @extends('admin.include.master')
-@section('title', 'Blog List')
+@section('title', 'Blog Comment List')
 @section('content')
 <style>
 .switch {
