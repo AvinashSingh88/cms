@@ -28,7 +28,7 @@
                             </div>
                             <div class="trainer-rank d-flex justify-content-between align-items-center" style="width:100px">
                                 @if(session('LoggedCustomer'))
-                                    <a class="like_btn " data-userId="{{session('LoggedCustomer')->id}}" data-blogId="{{$data['blog']->id}}"> 
+                                    <a class="like_btn " data-userId="{{session('LoggedCustomer')->user_id}}" data-blogId="{{$data['blog']->id}}"> 
                                         <i class="heart_class bx bx-heart d-flex">
                                             <div class="show_total_like">{{$data['blog']->total_like}}</div>
                                         </i> 
@@ -48,11 +48,23 @@
                         <h3>{{$data['blog']->title}}</h3>
                         <p> {!! $data['blog']->description !!} </p>
 
-                        <form method="post">
-                            @csrf
-                            <textarea class="form-control" id="comment" name="comment" placeholder="Comment" col="4"></textarea>
-                            <button class="btn btn-success" id="comment_id" type="submit">Comment</button>
-                        </form>
+                        @if(session('LoggedCustomer'))
+                            <form method="post">
+                                @csrf
+                                <textarea class="form-control" id="comment" name="comment" placeholder="Comment" col="4"></textarea>
+                                <button class="btn btn-success" id="comment_id" type="submit">Comment</button>
+                            </form>
+                        @endif
+
+                        <div class="">
+                            <h3>Comments</h3>
+
+                            <div class="show_comments" id="show_comments">
+                                
+                            </div>
+                        </div>
+
+
                     </div>
                     
                     <div class="col-lg-4">
@@ -143,7 +155,8 @@
                 },
                 dataType: 'json',
                 success: function (result) {
-                    console.log(result);
+                    // console.log(result);
+                    $('#show_comments').html(result.data);
                 }
             });
         }   

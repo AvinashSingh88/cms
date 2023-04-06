@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Response;
 use App\Repositories\Interfaces\WebCommonRepositoryInterface;
 
 class WebCommonController extends Controller
@@ -93,7 +94,18 @@ class WebCommonController extends Controller
         ]);
 
         $response = $this->webRepository->getBlogComments($request->blog_id);
-        return response($response);
+        $output = '';
+
+        if($response != null){
+            foreach($response as $res){
+                $output .= '<h5 class="text-success">'.$res->first_name. ' ' .$res->first_name.'</h5>';
+                $output .= '<p>'.$res->comment.'</p>';
+            }
+        }
+        return Response::json([
+            'status' => true,
+            'data' => $output,
+        ], 200);
     }
 
 

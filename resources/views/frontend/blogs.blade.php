@@ -30,7 +30,7 @@
                                         </div>
                                         <div class="trainer-rank d-flex align-items-center">
                                             @if(session('LoggedCustomer'))
-                                                <a class="like_btn" data-userId="{{session('LoggedCustomer')->id}}" data-blogId="{{$value->id}}"> 
+                                                <a class="like_btn" data-userId="{{session('LoggedCustomer')->user_id}}" data-blogId="{{$value->id}}"> 
                                                     <i class="heart_class @if($value->is_liked == 0) bx bx-heart @else fa fa-heart @endif">
                                                         <div class="show_total_like">{{$value->total_like}}</div>
                                                     </i> 

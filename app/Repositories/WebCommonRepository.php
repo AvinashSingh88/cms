@@ -49,7 +49,7 @@ class WebCommonRepository implements WebCommonRepositoryInterface
 
         $get_blogs_like = array();
         if(session('LoggedCustomer')){
-            $get_blogs_like = BlogLike::select('blog_id', 'status')->where('user_id', session('LoggedCustomer')->id)->where('status', 1)->get();
+            $get_blogs_like = BlogLike::select('blog_id', 'status')->where('user_id', session('LoggedCustomer')->user_id)->where('status', 1)->get();
         }
 
         foreach($blogs as $key => $list){
@@ -119,7 +119,7 @@ class WebCommonRepository implements WebCommonRepositoryInterface
 
     public function storeBlogComment($data){
         $blog = new BlogComment();
-        $blog->user_id = session('LoggedCustomer')->id;
+        $blog->user_id = session('LoggedCustomer')->user_id;
         $blog->blog_id = $data['blog_id'];
         $blog->comment = $data['comment'];
         $blog->status = 1;
@@ -134,9 +134,10 @@ class WebCommonRepository implements WebCommonRepositoryInterface
     }
 
     public function getBlogComments($blog_id){
-        $get_blog = BlogComment::select('blog_comments.*', 'blogs.total_comment')
-            ->leftJoin('blogs', 'blog_comments.blog_id', '=', 'blogs.id')
+        $get_blog = BlogComment::select('blog_comments.*', 'users.first_name', 'users.last_name')
+            ->leftJoin('users', 'users.id', '=', 'blog_comments.user_id')
             ->where('blog_comments.blog_id', $blog_id)
+            ->where('blog_comments.status', 1)
             ->latest()
             ->get();
         return $get_blog;
