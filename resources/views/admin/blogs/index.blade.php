@@ -56,8 +56,10 @@
                                         </td>
                                         <td>{{ convert_datetime_to_date_format($value->created_at, 'd M Y') }}</td>
                                         <td class="text-right">
-                                            <div class="dropdown dropdown-action"> 
-                                            <a class="dropdown-item" href="{{ route('admin.blogs.edit',$value->id) }}"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a>
+                                            <div class="dropdown dropdown-action"> <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item" href="{{ route('admin.blogs.edit',$value->id) }}"><i class="fas fa-pencil-alt m-r-5"></i> Edit</a>
+                                                    <a class="dropdown-item" href="{{ route('admin.blogs.show_comments',$value->id) }}"><i class="fas fa-comment m-r-5"></i> Comment</a> </div>
                                             </div>
                                         </td>
                                     </tr>

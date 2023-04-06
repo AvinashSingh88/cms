@@ -2,14 +2,14 @@
 namespace App\Repositories;
 use App\Repositories\Interfaces\BlogRepositoryInterface;
 use App\Models\Blog;
+use App\Models\BlogComment;
 use App\Models\Category;
 use App\Models\Country;
 // use Illuminate\Http\Request;
 
 class BlogRepository implements BlogRepositoryInterface
 {
-    public function allBlogs()
-    {
+    public function allBlogs(){
         $blogs = Blog::select('blogs.*', 'cat.title as parent_name', 'sub_cat.title as sub_category_name')
             ->leftJoin('categories as cat', 'cat.id', '=', 'blogs.category_id')
             ->leftJoin('categories as sub_cat', 'sub_cat.id', '=', 'blogs.sub_category_id')
@@ -17,23 +17,19 @@ class BlogRepository implements BlogRepositoryInterface
         return $blogs;
     }
 
-    public function getCategoryList()
-    {
+    public function getCategoryList(){
         return Category::select('id', 'title')->where('parent_id', '0')->where('status', 1)->get();
     }
 
-    public function getCountryList()
-    {
+    public function getCountryList(){
         return Country::select('id', 'country_name')->get();
     }
 
-    public function getSubCategoryList($category_id)
-    {
+    public function getSubCategoryList($category_id){
         return Category::select('id', 'title')->where('parent_id', $category_id)->where('status', 1)->get();
     }
 
-    public function storeBlog($request, $data)
-    {
+    public function storeBlog($request, $data){
         $blog = new Blog();
         $blog->category_id = $data['category_id'];
         $blog->sub_category_id = $data['sub_category_id'];
@@ -61,13 +57,11 @@ class BlogRepository implements BlogRepositoryInterface
         $blog->save();
     }
 
-    public function findBlog($id)
-    {
+    public function findBlog($id){
         return Blog::find($id);
     }
 
-    public function updateBlog($data, $id)
-    {
+    public function updateBlog($data, $id){
         $blog = Blog::where('id', $id)->first();
         $blog->category_id = $data['category_id'];
         $blog->sub_category_id = $data['sub_category_id'];
@@ -86,6 +80,20 @@ class BlogRepository implements BlogRepositoryInterface
         $blog->meta_description = $data['meta_description'];
         $blog->updated_by = $data['updated_by'];
         $blog->save();
+    }
+    
+    public function getAllComment($blog_id){
+        return BlogComment::select('blog_comments.*', 'users.first_name', 'users.last_name')
+        ->leftJoin('users', 'users.id', '=', 'blog_comments.user_id')
+        ->where('blog_comments.blog_id', $blog_id)
+        ->latest()->paginate(10);
+    }
+
+    public function setCommentStatus($comment_data){
+        $comment = BlogComment::find($comment_data->id);
+        $comment->status = $comment_data->status;
+        $comment->save();
+
     }
 
 }

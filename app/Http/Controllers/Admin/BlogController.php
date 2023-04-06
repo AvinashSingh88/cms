@@ -21,8 +21,7 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
         $blogs =  $this->blogRepository->allBlogs();
         return view('admin.blogs.index', compact('blogs'));
     }
@@ -32,15 +31,13 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create(){
         $countries =  $this->blogRepository->getCountryList();
         $categories =  $this->blogRepository->getCategoryList();
         return view('admin.blogs.create', compact('countries', 'categories'));
     }
 
-    public function generateSlug()
-    {
+    public function generateSlug(){
         $this->slug = SlugService::createSlug(Blog::class, 'slug', $this->title);
     }
 
@@ -50,8 +47,7 @@ class BlogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         $data = $request->validate([
             'category_id' => 'required',
             'sub_category_id' => 'nullable',
@@ -89,8 +85,7 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id){
         //
     }
 
@@ -99,8 +94,7 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id){
         $blog = $this->blogRepository->findBlog($id);
         if($blog){
             $countries =  $this->blogRepository->getCountryList();
@@ -116,9 +110,7 @@ class BlogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        
+    public function update(Request $request, $id){
         $data = $request->validate([
             'category_id' => 'required|not_in:0',
             'sub_category_id' => 'nullable',
@@ -157,16 +149,24 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id){
         $this->blogRepository->destroyBlog($id);
         return redirect()->route('admin.blogs.index')->with('status', 'Blog Delete Successfully');
     }
 
-    public function fetchSubCategory(Request $request)
-    {
+    public function fetchSubCategory(Request $request){
         $data['sub_categories'] = $this->blogRepository->getSubCategoryList($request->category_id);
         return response()->json($data);
+    }
+
+    public function showComments($id){
+        $blogs = $this->blogRepository->getAllComment($id);
+        return view('admin.blogs.comment', compact('blogs'));
+    }
+
+    public function changeCommentStatus(Request $request){
+        $comment = $this->blogRepository->setCommentStatus($request);
+        return response()->json($comment);
     }
 
 }
