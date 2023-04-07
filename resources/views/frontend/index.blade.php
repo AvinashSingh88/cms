@@ -11,7 +11,8 @@
 
   {!! $data->description !!}
 
-  <section id="testimonials" class="testimonials">
+  @if(isset($testimonials))
+    <section id="testimonials" class="testimonials">
         <div class="container" data-aos="fade-up">
             <div class="section-title">
                 <h2>Testimonials</h2>
@@ -42,6 +43,7 @@
 
         </div>
     </section>
+  @endif
   
   <!-- For Home Page -->
   <!-- <section id="hero" class="d-flex justify-content-center align-items-center" style="">
