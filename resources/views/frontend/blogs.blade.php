@@ -22,7 +22,9 @@
                                     </div>
 
                                     <h3><a href="{{ route('blog.detail',$value->slug) }}">{{$value->title}}</a></h3>
-                                    <p>{!! $value->description !!}</p>
+                                    <p>
+                                        {!! \Illuminate\Support\Str::limit($value->description ?? '',200,' ...') !!}
+                                    </p>
                                     <div class="trainer d-flex justify-content-between align-items-center">
                                         <div class="trainer-profile d-flex align-items-center">
                                             <!-- <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt=""> -->
