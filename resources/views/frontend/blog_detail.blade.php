@@ -51,7 +51,10 @@
                         @if(session('LoggedCustomer'))
                             <form method="post">
                                 @csrf
-                                <textarea class="form-control" id="comment" name="comment" placeholder="Comment" col="4"></textarea>
+                                <textarea class="form-control @error('comment') is-invalid @enderror" id="comment" name="comment" placeholder="Comment" col="4"></textarea>
+                                @error('comment')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                                 <button class="btn btn-success" id="comment_id" type="submit">Comment</button>
                             </form>
                         @endif
@@ -124,7 +127,10 @@
         //Store Comment in db
         $("#comment_id").click(function (event) {   
             event.preventDefault();
-            var comment = $('#comment').val();
+            var comment = $('#comment').val().trim();
+            if(comment == ""){
+                toastr.warning("Comment box is required.");
+            }
             var blog_id = {{$data['blog']->id}};
 
             $.ajax({
