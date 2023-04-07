@@ -41,7 +41,7 @@ class WebCommonController extends Controller
         ]);
         $this->webRepository->storeContactEnquiry($data);
         
-        return redirect("contact")->withSuccess('Thankyou contacting with us. Our Team will help you soon...');
+        return redirect("contact")->with(session()->flash('alert-success', 'Thankyou contacting with us. Our Team will help you soon...'));
     }
 
     public function testimonial(){
@@ -76,6 +76,7 @@ class WebCommonController extends Controller
         ]);
 
         $response = $this->webRepository->applyBlogAction($data);
+        // return response()->json(['success' => true, 'message' => 'Liked', 'response' => $response]);
         return response($response);
     }
 

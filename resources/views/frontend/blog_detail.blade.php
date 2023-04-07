@@ -106,9 +106,11 @@
                     if(result.status == 1){
                         $(event.target).removeClass('bx bx-heart');
                         $(event.target).addClass('fa fa-heart');
+                        toastr.success("Liked");
                     }else{
                         $(event.target).removeClass('fa fa-heart');
-                        $(event.target).addClass('bx bx-heart');                        
+                        $(event.target).addClass('bx bx-heart');  
+                        toastr.warning("Unliked");                      
                     }
                     var like_html = '<div class="show_total_like">'+ result.total_like +'</div>';
                     $(event.target).html(like_html);
@@ -136,7 +138,8 @@
                 dataType: 'json',
 
                 success: function (result) {
-                    console.log(result);
+                    $('#comment').val("");
+                    toastr.success("Your comment successfully added. Please wait for Admin approval.");
                 }
             });
 

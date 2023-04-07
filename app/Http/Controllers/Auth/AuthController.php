@@ -68,7 +68,7 @@ class AuthController extends Controller
             ]);
         }
          
-        return redirect("login")->with(session()->flash('alert-success', 'Successfully Registered.'));;
+        return redirect("login")->with(session()->flash('alert-success', 'Successfully Registered.'));
     }
 
     public function create(array $data){

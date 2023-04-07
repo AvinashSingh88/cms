@@ -130,6 +130,7 @@ class WebCommonRepository implements WebCommonRepositoryInterface
             }
             $update_blog->save();
         }
+        return $blog;
 
     }
 
