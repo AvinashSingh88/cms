@@ -18,12 +18,13 @@ class WebCommonController extends Controller
 
     public function index(){
         $data = $this->webRepository->getHome();
-        return view('frontend.index', compact('data'));
+        $testimonials = $this->webRepository->getTestimonial();
+        return view('frontend.index', compact('data', 'testimonials'));
     }
 
     public function about_us(){
         $data = $this->webRepository->getAboutus();
-        return view('frontend.index', compact('data'));
+        return view('frontend.about', compact('data'));
     }
 
     public function contact_us(){
