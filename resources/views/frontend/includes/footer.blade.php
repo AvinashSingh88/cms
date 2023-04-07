@@ -66,7 +66,8 @@
         <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
       </div>
     </div>
-  </footer><!-- End Footer -->
+  </footer>
+  <!-- End Footer -->
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -80,4 +81,19 @@
 
   <!-- Template Main JS File -->
   <script src="{{ asset('assets/assets_web/js/main.js')}}"></script>
+
+  <!-- Toastr JS File -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <script>
+    $(document).ready(function() {
+        toastr.options.timeOut = 5000;
+        @if (Session::has('alert-danger'))
+            toastr.error('{{ Session::get('alert-danger') }}');
+        @elseif(Session::has('alert-success'))
+            toastr.success('{{ Session::get('alert-success') }}');
+        @elseif(Session::has('alert-warning'))
+            toastr.success('{{ Session::get('alert-warning') }}');
+        @endif
+    });
+  </script>
  

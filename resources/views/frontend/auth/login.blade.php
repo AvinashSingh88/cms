@@ -1,12 +1,12 @@
 @extends('frontend.layouts.master');
-@section('title') Register @endsection
+@section('title') Login @endsection
 
 @section('content')
 
 <main id="main">
     <div class="breadcrumbs" data-aos="fade-in">
       <div class="container">
-        <h2>Register</h2>
+        <h2>Login</h2>
       </div>
     </div>
 
@@ -31,11 +31,11 @@
                         
                         <div class="row">
                             <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" name="username" placeholder="Your Email/Username" required>
+                                <input type="text" class="form-control" name="username" placeholder="Your Email/Username">
                             </div>
 
                             <div class="col-md-12 form-group">
-                                <input type="password" class="form-control" name="password" placeholder="Your Password" required>
+                                <input type="password" class="form-control" name="password" placeholder="Your Password">
                             </div>
 
                         </div>

@@ -29,14 +29,14 @@ class AuthController extends Controller
             'username' => $request->username,
             'password' => $request->password,
             'user_type_id' => 3,
-            'status' => 1,
+            'status' => 1, 
         ])->first();
 
         if (!$is_loggedin) {
-            return redirect()->route('login')->with(session()->flash('alert-warning', 'Failed! We do not recognize your username.'));
+            return redirect()->back()->with(session()->flash('alert-danger', 'Failed! We do not recognize your username or password.'));
         } else  {
             $request->session()->put('LoggedCustomer', $is_loggedin);
-            return redirect('index');
+            return redirect()->route('index')->with(session()->flash('alert-success', 'Successfully Loggedin.'));
         }
     }
     /** Customer Login page start */
@@ -68,7 +68,7 @@ class AuthController extends Controller
             ]);
         }
          
-        return redirect("index")->withSuccess('Great! You have Successfully loggedin');
+        return redirect("login")->with(session()->flash('alert-success', 'Successfully Registered.'));;
     }
 
     public function create(array $data){
