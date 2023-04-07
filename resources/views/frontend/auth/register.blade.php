@@ -51,7 +51,7 @@
                             </div>
 
                             <div class="col-md-6 form-group">
-                                <input type="password" class="form-control" name="confirm_password" placeholder="Your Confirm Password" required>
+                                <input type="password" class="form-control" name="password_confirmation" placeholder="Your Confirm Password" required>
                             </div>
                         </div>
                         

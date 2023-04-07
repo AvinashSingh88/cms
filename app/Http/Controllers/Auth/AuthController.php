@@ -54,7 +54,7 @@ class AuthController extends Controller
             'last_name' => 'nullable',
             'email' => 'required|email|unique:users',
             'mobile' => 'required|unique:users|min:10|max:13',
-            'password' => 'required|min:6',
+            'password' => 'required|confirmed|min:6'
         ]);
            
         $data = $request->all();
