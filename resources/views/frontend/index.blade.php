@@ -11,7 +11,7 @@
 
   {!! $data->description !!}
 
-  @if(empty($testimonials) != null)
+  @if($testimonials->isNotEmpty())
     <section id="testimonials" class="testimonials">
         <div class="container" data-aos="fade-up">
             <div class="section-title">
