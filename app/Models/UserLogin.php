@@ -13,5 +13,6 @@ class UserLogin extends Model
         'username',
         'password',
         'status',
+        'user_type_id'
     ];
 }

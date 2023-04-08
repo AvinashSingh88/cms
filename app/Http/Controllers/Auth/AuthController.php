@@ -47,6 +47,10 @@ class AuthController extends Controller
         return view('frontend.auth.register');
     }
 
+    public function getIpAddress(Request $request){
+        return $request->ip();
+    }
+
     public function postRegistration(Request $request){  
         // dd("I am here");
         $request->validate([
@@ -56,14 +60,17 @@ class AuthController extends Controller
             'mobile' => 'required|unique:users|min:10|max:13',
             'password' => 'required|confirmed|min:6'
         ]);
-           
+        
         $data = $request->all();
+        $data['ip_address'] = $request->ip();
+
         $check = $this->create($data);
         if($check){
             $user_login = UserLogin::create([
                 'username' => $data['email'],
                 'password' => $data['password'],
                 'user_id' => $check->id,
+                'user_type_id' => 3,
                 'status' => 1,
             ]);
         }
@@ -80,6 +87,7 @@ class AuthController extends Controller
             'status' => 1,
             'user_type_id' => 3,
             'user_designation_id' => 2,
+            'ip_address' => $data['ip_address'],
         ]);
     }
     /** Customer Registration page End */

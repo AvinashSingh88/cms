@@ -26,6 +26,7 @@ class User extends Authenticatable
         'status',
         'user_type_id',
         'user_designation_id',
+        'ip_address'
     ];
 
     /**
