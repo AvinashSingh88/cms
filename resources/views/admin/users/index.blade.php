@@ -48,7 +48,10 @@
                                         <td>{{ $value->mobile }}</td>
                                         <td>{{ $value->user_type_name }}</td>
                                         <td>
-                                            <div class="actions"> @if($value->status == 1) <a href="#" class="btn btn-sm bg-success-light mr-2">Active</a> @else <a href="#" class="btn btn-sm bg-danger-light mr-2">Inactive</a> @endif </div>
+                                            <select class="change_status" name="status" data-user_id="{{$value->id}}">
+                                                <option value="1" class="text-success" @if($value->status == 1) selected @endif>Active</option>
+                                                <option value="0" class="text-danger" @if($value->status == 0) selected @endif>Inactive</option>
+                                            </select>
                                         </td>
                                         <td>{{ convert_datetime_to_date_format($value->created_at, 'd M Y') }}</td>
                                         <td class="text-right">
@@ -73,5 +76,32 @@
     </div>
 </div>
 
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        $(".change_status").change(function (event) {
+            event.preventDefault();
+            var user_id = $(this).data("user_id");
+            var status = $(this).val();
+            changeStatus(user_id, status);        
+        });
+
+        function changeStatus(user_id, status){
+            $.ajax({
+                url: "{{url('admin/users/change_status')}}",
+                type: "GET",
+                data: {
+                    id: user_id,
+                    status: status,
+                    _token: '{{csrf_token()}}'
+                },
+                dataType: 'json',
+                success: function (result) {
+                    toastr.success("Status Successfully Updated");
+                }
+            });
+        }
+    </script>
 @endsection
 

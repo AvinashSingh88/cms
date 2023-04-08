@@ -70,7 +70,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminAuthCheck'], 'as' => '
     Route::get('/customer/leads', [CmsPageController::class, 'customerLeadList'])->name('customer.leads');
 
     Route::resource('/testimonials', TestimonialController::class);
+
     Route::get('/users/index', [UserController::class, 'index'])->name('users.index');
+    Route::get('/users/change_status', [UserController::class, 'changeStatus'])->name('users.change_status');
 
     Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 

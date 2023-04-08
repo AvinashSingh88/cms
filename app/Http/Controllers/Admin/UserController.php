@@ -27,4 +27,9 @@ class UserController extends Controller
         return view('admin.users.index', compact('users'));
     }
 
+    public function changeStatus(Request $request){
+        $user = $this->userRepository->setUserStatus($request);
+        return response()->json($user);
+    }
+
 }
