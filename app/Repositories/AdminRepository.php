@@ -14,6 +14,7 @@ class AdminRepository implements AdminRepositoryInterface
         $blog_count = Blog::where('status', 1)->count();
         $blog_like_count = Blog::where('status', 1)->sum('total_like');
         $blog_comment_count = Blog::where('status', 1)->sum('total_comment');
+        $blog_view_count = Blog::where('status', 1)->sum('total_view');
 
         $data = [
             'user_count' => $user_count,
@@ -21,7 +22,8 @@ class AdminRepository implements AdminRepositoryInterface
             'subcategory_count' => $subcategory_count,
             'blog_count' => $blog_count,
             'blog_like_count' => $blog_like_count,
-            'blog_comment_count' => $blog_comment_count
+            'blog_comment_count' => $blog_comment_count,
+            'blog_view_count' => $blog_view_count,
         ];
         return $data;
     }

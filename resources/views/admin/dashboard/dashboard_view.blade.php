@@ -121,6 +121,24 @@
                 </div>
             </div>
 
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                <div class="card card-stats statistic-box mb-4">
+                    <div
+                        class="card-header card-header-info card-header-icon position-relative border-0 text-right px-2 py-0">
+                        <div class="card-icon d-flex align-items-center justify-content-center">
+                            <i class="material-icons">date_range</i>
+                        </div>
+                        <p class="card-category text-uppercase fs-10 font-weight-bold text-muted1">
+                            Total Views</p>
+                        <h3 class="card-title fs-18 font-weight-bold">{{$data['blog_view_count']}}</h3>
+                    </div>
+                    <div class="card-footer p-3">
+                        <div class="stats">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
         </div>
     </div>
