@@ -62,6 +62,14 @@
                         <div class="">
                             <h3>Comments</h3>
 
+                            @if(!session('LoggedCustomer'))
+                            <div>
+                                <p>Want to comment..? </p>
+                                <a href="{{ url('login') }}" class="get-started-btn">Login</a>
+                                <a href="{{ url('register') }}" class="get-started-btn">Register</a>
+                            </div>
+                            @endif
+
                             <div class="show_comments" id="show_comments">
                                 
                             </div>

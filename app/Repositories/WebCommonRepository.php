@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Blog;
 use App\Models\BlogLike;
 use App\Models\BlogComment;
+use App\Models\BlogView;
 use App\Models\CustomerLead;
 
 class WebCommonRepository implements WebCommonRepositoryInterface
@@ -66,7 +67,7 @@ class WebCommonRepository implements WebCommonRepositoryInterface
         return $blogs;
     }
 
-    public function getBlogDetail($slug){
+    public function getBlogDetail($slug, $ip){
 
         $blog = Blog::select('*')->where('slug', $slug)->where('status', 1)->first();        
 
@@ -81,7 +82,25 @@ class WebCommonRepository implements WebCommonRepositoryInterface
             'blog' => $blog,
             'sub_category_list' => $sub_category_list,
         ];
+        $this->storeViewBlogUser($blog->id, $ip);
+
         return $data;
+    }
+
+    public function storeViewBlogUser($blog_id, $ip){
+        $today = date('Y-m-d');
+        $check_blog = BlogView::where('blog_id', $blog_id)->where('ip_address', $ip)->where('date', $today)->first();
+        if(!$check_blog){
+            $blog = new BlogView();
+            $blog->ip_address = $ip;
+            $blog->blog_id = $blog_id;
+            $blog->date = $today;
+            if($blog->save()){
+                $update_blog = Blog::find($blog_id);
+                $update_blog->total_view += 1;
+                $update_blog->save();
+            }
+        }
     }
 
     public function applyBlogAction($data){
