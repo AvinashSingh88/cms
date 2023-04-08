@@ -12,4 +12,5 @@ Interface BlogRepositoryInterface{
     public function findBlog($id);
     public function updateBlog($data, $id); 
     public function setCommentStatus($comment_data); 
+    public function getAllViews($blog_id);
 }

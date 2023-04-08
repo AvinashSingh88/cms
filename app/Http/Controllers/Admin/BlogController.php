@@ -145,14 +145,19 @@ class BlogController extends Controller
         return response()->json($data);
     }
 
-    public function showComments($id){
-        $blogs = $this->blogRepository->getAllComment($id);
-        return view('admin.blogs.comment', compact('blogs'));
-    }
-
     public function showLikes($id){
         $blogs = $this->blogRepository->getAllLike($id);
         return view('admin.blogs.like', compact('blogs'));
+    }
+
+    public function showViews($id){
+        $blogs = $this->blogRepository->getAllViews($id);
+        return view('admin.blogs.view', compact('blogs'));
+    }
+
+    public function showComments($id){
+        $blogs = $this->blogRepository->getAllComment($id);
+        return view('admin.blogs.comment', compact('blogs'));
     }
 
     public function changeCommentStatus(Request $request){

@@ -3,6 +3,7 @@ namespace App\Repositories;
 use App\Repositories\Interfaces\BlogRepositoryInterface;
 use App\Models\Blog;
 use App\Models\BlogLike;
+use App\Models\BlogView;
 use App\Models\BlogComment;
 use App\Models\Category;
 use App\Models\Country;
@@ -74,6 +75,13 @@ class BlogRepository implements BlogRepositoryInterface
         $blog->save();
     }
     
+    public function getAllViews($blog_id){
+        return BlogView::select('*')
+        ->where('blog_id', $blog_id)
+        ->orderBy('id', 'DESC')
+        ->paginate(10);
+    }
+
     public function getAllLike($blog_id){
         return BlogLike::select('blog_likes.*', 'users.first_name', 'users.last_name')
         ->leftJoin('users', 'users.id', '=', 'blog_likes.user_id')
