@@ -102,7 +102,7 @@ class BlogRepository implements BlogRepositoryInterface
         $comment->status = $comment_data->status;
         if($comment->save()){
             $update_blog = Blog::find($comment->blog_id);
-            if($blog->status == 1){
+            if($update_blog->status == 1){
                 $update_blog->total_comment += 1;
             }else{
                 $update_blog->total_comment -= 1;
