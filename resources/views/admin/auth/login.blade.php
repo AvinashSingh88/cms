@@ -20,8 +20,8 @@
 		<div class="login-wrapper">
 			<div class="container">
             <div class="col-md-12 text-center mt-2">
-                <h3 class="text-primary">Blog CMS</h1>
-            <!-- <img class="img-fluid" src="{{ asset('assets/assets_admin/img/hotel_logo.png')}}" alt="Logo" style="height:50px;"> -->
+                <!-- <h3 class="text-primary">Blog CMS</h3> -->
+            <img class="img-fluid" src="{{ asset('assets/logo.png')}}" alt="Logo" style="height:50px;">
             </div>
 				<div class="loginbox">
 					<div class="login-right">

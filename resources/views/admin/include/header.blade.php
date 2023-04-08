@@ -1,8 +1,8 @@
 <div class="header">
     <div class="header-left">
-        <a href="index.html" class="logo">
-            BLog
-            <!-- <img src="assets/img/hotel_logo.png" alt="logo"> -->
+        <a href="{{ url('admin/dashboard') }}" class="logo">
+            <!-- BLog -->
+            <img src="{{ asset('assets/logo.png')}}" alt="logo">
         </a>
 
     </div>
