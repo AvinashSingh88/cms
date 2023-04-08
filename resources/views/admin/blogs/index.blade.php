@@ -13,9 +13,6 @@
                     <div class="breadcrumb mt-3 border-bottom pb-2">
                         <a href="{{ url('') }}"><i class="fa fa-home" aria-hidden="true"></i> Home</a>/Blogs
                     </div>
-                    <!-- <div class="mt-2">
-                        <h4 class="card-title float-left mt-2">Blogs</h4>
-                    </div> -->
                 </div>
             </div>
         </div>

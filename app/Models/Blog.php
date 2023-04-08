@@ -17,7 +17,6 @@ class Blog extends Model
         'category_id',
         'sub_category_id',
         'country',
-        'banner_image',
         'blog_image',
         'slug',
         'status',

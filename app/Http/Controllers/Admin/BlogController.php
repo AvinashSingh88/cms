@@ -55,18 +55,11 @@ class BlogController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'required',
             // 'blog_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            // 'banner_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'status' => 'required',
             'meta_title' => 'nullable',
             'meta_tag' => 'nullable',
             'meta_description' => 'nullable',
         ]);
-        
-        if($request->has('banner_image')){
-            $data['banner_image'] = upload_asset($request->banner_image);
-        }else{
-            $data['banner_image'] = NULL;
-        }
 
         if($request->has('blog_image')){
             $data['blog_image'] = upload_asset($request->blog_image);
@@ -118,18 +111,11 @@ class BlogController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'required',
             // 'blog_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            // 'banner_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'status' => 'required',
             'meta_title' => 'nullable',
             'meta_tag' => 'nullable',
             'meta_description' => 'nullable',
         ]);
-        
-        if($request->has('banner_image')){
-            $data['banner_image'] = upload_asset($request->banner_image);
-        }else{
-            $data['banner_image'] = NULL;
-        }
 
         if($request->has('blog_image')){
             $data['blog_image'] = upload_asset($request->blog_image);

@@ -84,16 +84,6 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Banner Image </label>
-                                        <input class="form-control" type="file" name="banner_image">
-                                        @if($blog->banner_image)
-                                            <img src="{{$blog->banner_image}}" class="mt-2 rounded" width="80" height="50">
-                                        @endif
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
                                         <label>Country </label>
                                         <select class=" form-control" name="country">
                                             <option value="">Select Country</option>

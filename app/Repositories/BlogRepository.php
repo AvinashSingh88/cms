@@ -37,12 +37,6 @@ class BlogRepository implements BlogRepositoryInterface
         $blog->country = $data['country'];
         $blog->title = $data['title'];
         $blog->description = $data['description'];
-        
-        if($data['banner_image']){
-            $blog->banner_image = $data['banner_image'];
-        }else{
-            $blog->banner_image = NULL;
-        }
 
         if($data['blog_image']){
             $blog->blog_image = $data['blog_image'];
@@ -69,9 +63,6 @@ class BlogRepository implements BlogRepositoryInterface
         $blog->country = $data['country'];
         $blog->title = $data['title'];
         $blog->description = $data['description'];
-        if($data['banner_image']){
-            $blog->banner_image = $data['banner_image'];
-        }
         if($data['blog_image']){
             $blog->blog_image = $data['blog_image'];
         }
