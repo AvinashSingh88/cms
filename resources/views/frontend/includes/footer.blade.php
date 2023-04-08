@@ -4,7 +4,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Mentor</h3>
+            <h3>Orrish CMS</h3>
             <p>
               A108 Adam Street <br>
               New York, NY 535022<br>
@@ -51,7 +51,7 @@
 
       <div class="me-md-auto text-center text-md-start">
         <div class="copyright">
-          &copy; Copyright <strong><span>Mentor</span></strong>. All Rights Reserved
+          &copy; Copyright <strong><span>Orrish</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
 
