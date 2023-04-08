@@ -100,7 +100,15 @@ class BlogRepository implements BlogRepositoryInterface
     public function setCommentStatus($comment_data){
         $comment = BlogComment::find($comment_data->id);
         $comment->status = $comment_data->status;
-        $comment->save();
+        if($comment->save()){
+            $update_blog = Blog::find($comment->blog_id);
+            if($blog->status == 1){
+                $update_blog->total_comment += 1;
+            }else{
+                $update_blog->total_comment -= 1;
+            }
+            $update_blog->save();
+        }
 
     }
 

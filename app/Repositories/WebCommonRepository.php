@@ -142,13 +142,8 @@ class WebCommonRepository implements WebCommonRepositoryInterface
         $blog->blog_id = $data['blog_id'];
         $blog->comment = $data['comment'];
         $blog->status = 0;
-        if($blog->save()){
-            $update_blog = Blog::find($data['blog_id']);
-            if($blog->status == 1){
-                $update_blog->total_comment += 1;
-            }
-            $update_blog->save();
-        }
+        $blog->save();
+        
         return $blog;
 
     }
