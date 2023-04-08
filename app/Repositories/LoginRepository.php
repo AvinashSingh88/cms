@@ -11,6 +11,7 @@ class LoginRepository implements LoginRepositoryInterface
         ->join('user_types', 'user_types.id', '=', 'users.user_type_id')
         ->where('user_logins.username',  $data['username'])
         ->where('user_logins.password', $data['password'])
+        ->where('user_logins.status', 1)
         ->select(['users.*', 'user_types.name as userType', 'user_logins.*'])
         ->first();
     }
