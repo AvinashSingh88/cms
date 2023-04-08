@@ -3,6 +3,7 @@
 				<div id="sidebar-menu" class="sidebar-menu">
 					<ul>
 						<li> <a href="{{ route('admin.dashboard') }}"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a> </li>
+						<li> <a href="{{ route('admin.users.index') }}"><i class="fas fa-tachometer-alt"></i> <span>Users</span></a> </li>
 
 						<li class="submenu"> <a href="#"><i class="fas fa-calculator"></i> <span> Setup </span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">

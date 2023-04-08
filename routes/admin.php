@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\ImageCategoryController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\CmsPageController;
 use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +70,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminAuthCheck'], 'as' => '
     Route::get('/customer/leads', [CmsPageController::class, 'customerLeadList'])->name('customer.leads');
 
     Route::resource('/testimonials', TestimonialController::class);
+    Route::get('/users/index', [UserController::class, 'index'])->name('users.index');
 
     Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 
