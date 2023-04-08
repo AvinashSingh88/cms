@@ -10,7 +10,7 @@
                             </ul>
 						</li>
 
-                        <li class="submenu"> <a href="#"><i class="fas fa fa-list-ul"></i> <span>Manage Blogs </span> <span class="menu-arrow"></span></a>
+                        <li class="submenu"> <a href="#"><i class="fas fa fa-list-ul"></i> <span> Blogs </span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
 								<li><a href="{{ url('admin/categories') }}"> Categories </a></li>
 								<li><a href="{{ url('admin/sub_categories') }}"> SubCategories </a></li>
@@ -19,34 +19,28 @@
 							</ul>
 						</li>
 
-                        <!-- <li class="submenu"> <a href="#"><i class="fas fa-calculator"></i> <span>Manage Locations </span> <span class="menu-arrow"></span></a>
-							<ul class="submenu_class" style="display: none;">
-								<li><a href="">Countries</a></li>
-							</ul>
-						</li> -->
-
-						<li class="submenu"> <a href="#"><i class="fas fa-calculator"></i> <span> Manage Galleries </span> <span class="menu-arrow"></span></a>
+						<li class="submenu"> <a href="#"><i class="fas fa-calculator"></i> <span> Galleries </span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
 								<li><a href="{{ url('admin/image_categories') }}"> All Image Category </a></li>
 								<li><a href="{{ url('admin/galleries') }}"> Add Galleries </a></li>
                             </ul>
 						</li>
 
-						<li class="submenu"> <a href="#"><i class="fas fa-calculator"></i> <span> Manage CMS </span> <span class="menu-arrow"></span></a>
+						<li class="submenu"> <a href="#"><i class="fas fa-calculator"></i> <span> CMS </span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
 								<li><a href="{{ url('admin/pages') }}"> All CMS Pages </a></li>
 								<li><a href="{{ url('admin/pages/create') }}"> Add New CMS Page </a></li>
                             </ul>
 						</li>
 
-						<li class="submenu"> <a href="#"><i class="fas fa-calculator"></i> <span> Manage Testimonials </span> <span class="menu-arrow"></span></a>
+						<li class="submenu"> <a href="#"><i class="fas fa-calculator"></i> <span> Testimonials </span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
 								<li><a href="{{ url('admin/testimonials') }}"> All Testimonials </a></li>
 								<li><a href="{{ url('admin/testimonials/create') }}"> Add New Testimonial </a></li>
                             </ul>
 						</li>
 
-						<li class="submenu"> <a href="#"><i class="fas fa-calculator"></i> <span> Manage Customer Leads </span> <span class="menu-arrow"></span></a>
+						<li class="submenu"> <a href="#"><i class="fas fa-calculator"></i> <span> Customer Leads </span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
 								<li><a href="{{ url('admin/customer/leads') }}"> All Customer Leads </a></li>
                             </ul>

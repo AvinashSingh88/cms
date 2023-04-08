@@ -51,7 +51,7 @@ class ImageCategoryController extends Controller
         $data['created_by'] = session('LoggedUser')->id;
         $this->imageCategoryRepository->storeCategory($data);
 
-        return redirect()->route('admin.image_categories.index')->with('message', 'Image Category Created Successfully');
+        return redirect()->route('admin.image_categories.index')->with(session()->flash('alert-success', 'Image Category Created Successfully'));
     }
 
     /**
@@ -91,7 +91,7 @@ class ImageCategoryController extends Controller
             'status' => 'required'
         ]);
         $this->imageCategoryRepository->updateCategory($request->all(), $id);
-        return redirect()->route('admin.image_categories.index')->with('message', 'Image Category Updated Successfully');
+        return redirect()->route('admin.image_categories.index')->with(session()->flash('alert-success', 'Image Category Updated Successfully'));
     }
 
     /**

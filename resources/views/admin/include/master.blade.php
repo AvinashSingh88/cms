@@ -17,8 +17,7 @@
 	<link rel="stylesheet" href="{{ asset('assets/assets_admin/css/style.css')}}"> </head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
 
 	<!-- Used for Tiny Text Editor -->
 	<script src="https://cdn.tiny.cloud/1/idhc3eu5xqredw5w170x7bl771ac2zy9rbggh7mm04xrps7q/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
@@ -55,7 +54,6 @@
 	<script src="{{ asset('assets/assets_admin/plugins/raphael/raphael.min.js')}}"></script>
 	<script src="{{ asset('assets/assets_admin/js/script.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script>
 		//Used for Tiny Text editor
 		tinymce.init({

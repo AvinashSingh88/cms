@@ -54,7 +54,7 @@ class SubCategoryController extends Controller
         $data['created_by'] = session('LoggedUser')->id;
         $this->subcategoryRepository->storeSubCategory($data);
 
-        return redirect()->route('admin.sub_categories.index')->with('message', 'Sub Category Created Successfully');
+        return redirect()->route('admin.sub_categories.index')->with(session()->flash('alert-success', 'Sub Category Created Successfully'));
     }
 
     /**
@@ -98,7 +98,7 @@ class SubCategoryController extends Controller
             'status' => 'required',
         ]);
         $this->subcategoryRepository->updateSubCategory($request->all(), $id);
-        return redirect()->route('admin.sub_categories.index')->with('message', 'SubCategory Updated Successfully');
+        return redirect()->route('admin.sub_categories.index')->with(session()->flash('alert-success', 'SubCategory Updated Successfully'));
     }
 
     /**
@@ -110,6 +110,6 @@ class SubCategoryController extends Controller
     public function destroy($id)
     {
         $this->subcategoryRepository->destroySubCategory($id);
-        return redirect()->route('admin.sub_categories.index')->with('status', 'SubCategory Delete Successfully');
+        return redirect()->route('admin.sub_categories.index')->with(session()->flash('alert-success', 'SubCategory Delete Successfully'));
     }
 }

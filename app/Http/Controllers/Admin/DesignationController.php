@@ -53,7 +53,7 @@ class DesignationController extends Controller
         ]);
 
         $this->designationRepository->storeDesignation($data);
-        return redirect()->back()->with('message', 'Designation Created Successfully');
+        return redirect()->back()->with(session()->flash('alert-success', 'Designation Created Successfully'));
     }
 
     /**

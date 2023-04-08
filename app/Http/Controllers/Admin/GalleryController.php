@@ -69,7 +69,7 @@ class GalleryController extends Controller
         $data['created_by'] = session('LoggedUser')->id;
         $this->galleryRepository->storeGallery($request, $data);
 
-        return redirect()->route('admin.galleries.index')->with('status', 'Gallery Created Successfully');
+        return redirect()->route('admin.galleries.index')->with(session()->flash('alert-success', 'Gallery Created Successfully'));
     }
 
     /**
@@ -128,7 +128,7 @@ class GalleryController extends Controller
         $data['updated_by'] = session('LoggedUser')->id;
 
         $this->galleryRepository->updateGallery($data, $id);
-        return redirect()->route('admin.galleries.index')->with('message', 'Gallery Updated Successfully');
+        return redirect()->route('admin.galleries.index')->with(session()->flash('alert-success', 'Gallery Updated Successfully'));
     }
 
 }

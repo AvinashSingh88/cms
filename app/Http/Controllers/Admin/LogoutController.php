@@ -12,6 +12,6 @@ class LogoutController extends Controller
     {
         Session::flush();
         Auth::logout();
-        return redirect('/');
+        return redirect('/admin')->with(session()->flash('alert-success', 'Successfully Loggedout'));
     }
 }

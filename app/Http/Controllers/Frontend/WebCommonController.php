@@ -76,7 +76,6 @@ class WebCommonController extends Controller
         ]);
 
         $response = $this->webRepository->applyBlogAction($data);
-        // return response()->json(['success' => true, 'message' => 'Liked', 'response' => $response]);
         return response($response);
     }
 

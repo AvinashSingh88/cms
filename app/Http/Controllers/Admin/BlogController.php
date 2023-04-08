@@ -77,7 +77,7 @@ class BlogController extends Controller
         $data['created_by'] = session('LoggedUser')->id;
         $this->blogRepository->storeBlog($request, $data);
 
-        return redirect()->route('admin.blogs.index')->with('status', 'Blog Created Successfully');
+        return redirect()->route('admin.blogs.index')->with(session()->flash('alert-success', 'Blog Created Successfully'));
     }
 
     /**
@@ -140,8 +140,8 @@ class BlogController extends Controller
         $data['updated_by'] = session('LoggedUser')->id;
 
         $this->blogRepository->updateBlog($data, $id);
-        // return redirect('form')->with('status', 'Form Data Has Been Inserted');
-        return redirect()->route('admin.blogs.index')->with('message', 'Blog Updated Successfully');
+
+        return redirect()->route('admin.blogs.index')->with(session()->flash('alert-success', 'Blog Updated Successfully'));
     }
 
     /**
@@ -151,7 +151,7 @@ class BlogController extends Controller
      */
     public function destroy($id){
         $this->blogRepository->destroyBlog($id);
-        return redirect()->route('admin.blogs.index')->with('status', 'Blog Delete Successfully');
+        return redirect()->route('admin.blogs.index')->with(session()->flash('alert-success', 'Blog Delete Successfully'));
     }
 
     public function fetchSubCategory(Request $request){

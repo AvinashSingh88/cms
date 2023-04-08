@@ -57,7 +57,7 @@ class CategoryController extends Controller
         $data['created_by'] = session('LoggedUser')->id;
         $this->categoryRepository->storeCategory($data);
 
-        return redirect()->route('admin.categories.index')->with('message', 'Category Created Successfully');
+        return redirect()->route('admin.categories.index')->with(session()->flash('alert-success', 'Category Created Successfully'));
     }
 
     /**
@@ -98,7 +98,7 @@ class CategoryController extends Controller
             // 'updated_by' => 'required',
         ]);
         $this->categoryRepository->updateCategory($request->all(), $id);
-        return redirect()->route('admin.categories.index')->with('message', 'Category Updated Successfully');
+        return redirect()->route('admin.categories.index')->with(session()->flash('alert-success', 'Category Updated Successfully'));
     }
 
     /**
@@ -110,6 +110,6 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $this->categoryRepository->destroyCategory($id);
-        return redirect()->route('admin.categories.index')->with('status', 'Category Delete Successfully');
+        return redirect()->route('admin.categories.index')->with(session()->flash('alert-success', 'Category Delete Successfully'));
     }
 }

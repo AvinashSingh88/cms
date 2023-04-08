@@ -70,7 +70,7 @@ class CmsPageController extends Controller
         $data['created_by'] = session('LoggedUser')->id;
         $this->cmsPageRepository->storeCmsPage($request, $data);
 
-        return redirect()->route('admin.pages.index')->with('status', 'CmsPage Created Successfully');
+        return redirect()->route('admin.pages.index')->with(session()->flash('alert-success', 'CmsPage Created Successfully'));
     }
 
     /**
@@ -126,7 +126,7 @@ class CmsPageController extends Controller
 
         $this->cmsPageRepository->updateCmsPage($data, $id);
         // return redirect('form')->with('status', 'Form Data Has Been Inserted');
-        return redirect()->route('admin.pages.index')->with('message', 'CmsPage Updated Successfully');
+        return redirect()->route('admin.pages.index')->with(session()->flash('alert-success', 'CmsPage Updated Successfully'));
     }
 
     public function customerLeadList()

@@ -62,7 +62,7 @@ class TestimonialController extends Controller
         $data['created_by'] = session('LoggedUser')->id;
         $this->testimonialRepository->storeTestimonial($request, $data);
 
-        return redirect()->route('admin.testimonials.index')->with('status', 'Testimonial Created Successfully');
+        return redirect()->route('admin.testimonials.index')->with(session()->flash('alert-success', 'Testimonial Created Successfully'));
     }
 
     /**
@@ -112,7 +112,7 @@ class TestimonialController extends Controller
         $data['updated_by'] = session('LoggedUser')->id;
 
         $this->testimonialRepository->updateTestimonial($data, $id);
-        return redirect()->route('admin.testimonials.index')->with('message', 'Testimonial Updated Successfully');
+        return redirect()->route('admin.testimonials.index')->with(session()->flash('alert-success', 'Testimonial Updated Successfully'));
     }
 
    
