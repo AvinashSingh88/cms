@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\CmsPageController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\BusinessController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,10 +70,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminAuthCheck'], 'as' => '
     Route::resource('/pages', CmsPageController::class);
     Route::get('/customer/leads', [CmsPageController::class, 'customerLeadList'])->name('customer.leads');
 
+    /** Route For Testimonial Page */
     Route::resource('/testimonials', TestimonialController::class);
-
+    
+    /** Route For user/customer Page */
     Route::get('/users/index', [UserController::class, 'index'])->name('users.index');
     Route::get('/users/change_status', [UserController::class, 'changeStatus'])->name('users.change_status');
+    
+    /** Route For Bussiness Setting page */
+    Route::get('/business_setting/social_media', [BusinessController::class, 'socialMedia'])->name('business_setting.social_media');
+    Route::post('/business_setting/social_media/update', [BusinessController::class, 'socialMediaUpdate'])->name('business_setting.social_media.update');
 
     Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 

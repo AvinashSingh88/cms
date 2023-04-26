@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Providers;
-
 use Illuminate\Support\ServiceProvider;
 
 use App\Repositories\Interfaces\LoginRepositoryInterface;
@@ -26,7 +25,8 @@ use App\Repositories\Interfaces\TestimonialRepositoryInterface;
 use App\Repositories\TestimonialRepository;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\Repositories\UserRepository;
-
+use App\Repositories\Interfaces\BusinessRepositoryInterface;
+use App\Repositories\BusinessRepository;
 use App\Repositories\Interfaces\WebCommonRepositoryInterface;
 use App\Repositories\WebCommonRepository;
 
@@ -50,9 +50,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(CmsPageRepositoryInterface::class, CmsPageRepository::class);
         $this->app->bind(TestimonialRepositoryInterface::class, TestimonialRepository::class);
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
-        
+        $this->app->bind(BusinessRepositoryInterface::class, BusinessRepository::class);
+    
         /** Bind for Frontend */
         $this->app->bind(WebCommonRepositoryInterface::class, WebCommonRepository::class);
+    
     }
 
     /**

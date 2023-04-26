@@ -47,6 +47,12 @@
                             </ul>
 						</li>
 
+						<li class="submenu"> <a href="#"><i class="fas fa-calculator"></i> <span> Business Settings </span> <span class="menu-arrow"></span></a>
+							<ul class="submenu_class" style="display: none;">
+								<li><a href="{{ url('admin/business_setting/social_media') }}"> Social Media </a></li>
+                            </ul>
+						</li>
+
 					</ul>
 				</div>
 			</div>
