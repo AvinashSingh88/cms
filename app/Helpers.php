@@ -1,4 +1,5 @@
 <?php
+    use App\Models\BusinessSetting;
 
     /** Change DateTime format to any date/datetime format */
     if (!function_exists('convert_datetime_to_date_format')) {
@@ -19,48 +20,41 @@
 
     /** return file uploaded via uploader */
     if (!function_exists('upload_asset')) {
-        function upload_asset($file_name)
+        function upload_asset($file_name, $folder_name="all", $type="local")
         {
-            $uploadedFileUrl = cloudinary()->upload($file_name->getRealPath())->getSecurePath();
-            return $uploadedFileUrl;
+            if ($type == "local") {
+                $extenstion = $file_name->getClientOriginalExtension();
+                $filename = $folder_name. '-' . time() . '.' . $extenstion;
+                $file_name->move(public_path('uploads/'.$folder_name), $filename);
+                $file_path = 'uploads/'.$folder_name.'/'. $filename;
+                return $file_path;
+            }
 
-            // Upload an image file to cloudinary with one line of code
-            // $uploadedFileUrl = cloudinary()->upload($request->file($file_name)->getRealPath())->getSecurePath();
-            
-            // // Upload a video file to cloudinary with one line of code
-            // $uploadedFileUrl = cloudinary()->uploadVideo($request->file($file_name)->getRealPath())->getSecurePath();
-
-            // // Upload any file  to cloudinary with one line of code
-            // $uploadedFileUrl = cloudinary()->uploadFile($request->file($file_name)->getRealPath())->getSecurePath();
-
-            // // Upload an existing remote file to Cloudinary with one line of code
-            // $uploadedFileUrl = cloudinary()->uploadFile($remoteFileUrl)->getSecurePath();
+            if($type == "cloudinary"){
+                $uploadedFileUrl = cloudinary()->upload($file_name->getRealPath())->getSecurePath();
+                return $uploadedFileUrl;
+            }
         }
     }
 
+     /** Generate an asset path for the application */
     if (!function_exists('static_asset')) {
-        /**
-         * Generate an asset path for the application.
-         *
-         * @param string $path
-         * @param bool|null $secure
-         * @return string
-         */
         function static_asset($path, $secure = null)
         {
             return app('url')->asset('public/' . $path, $secure);
         }
     }
-    
-    // if (!function_exists('getBaseURL')) {
-    //     function getBaseURL()
-    //     {
-    //         $root = '//' . $_SERVER['HTTP_HOST'];
-    //         $root .= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
-    
-    //         return $root;
-    //     }
-    // }
+
+    /** Fetch value by type and field_name from business setting */
+    if (!function_exists('fetch_business_setting_value')) {
+        function fetch_business_setting_value($type, $field_name)
+        {
+            return BusinessSetting::where('type', $type)->where('field_name', $field_name)->pluck('value')->first();
+        }
+    }
+
+
+
 
 
 ?>

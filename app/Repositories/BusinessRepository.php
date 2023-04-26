@@ -5,22 +5,43 @@ use App\Models\BusinessSetting;
 
 class BusinessRepository implements BusinessRepositoryInterface
 {
-    public function getSocialMediaLink(){
-        return BusinessSetting::select('value')->where('type', 'social_media')->where('status', 1)->get();
+    public function getBusinessSetupList($type){
+        return BusinessSetting::select('field_name', 'value')->where('type', $type)->where('status', 1)->get();
     }
 
-    public function updateSocialMedia($data){
+    public function updateWebsiteData($data){
         foreach($data['field_names'] as $key => $val){
             // dd($data['field_names'][1]);
             $social_media = BusinessSetting::where('type', $data['type'])->where('field_name', $val)->first();
             if($social_media == null){
                 $social_media = new BusinessSetting(); 
+                $social_media->type = $data['type'];
+                $social_media->field_name = $val;
             }
-            $social_media->type = $data['type'];
-            $social_media->field_name = $val;
             $social_media->value = $data['values'][$key];
             $social_media->save();
+        }
+        
+        if($data['header_logo']){
+            $header_logo_update = BusinessSetting::where('type', $data['type'])->where('field_name', 'header_logo')->first();
+            if($header_logo_update == null){
+                $header_logo_update = new BusinessSetting(); 
+                $header_logo_update->type = $data['type'];
+                $header_logo_update->field_name = 'header_logo';
+            }
+            $header_logo_update->value = $data['header_logo'];
+            $header_logo_update->save();
+        }
 
+        if($data['footer_logo']){
+            $footer_logo_update = BusinessSetting::where('type', $data['type'])->where('field_name', 'header_logo')->first();
+            if($footer_logo_update == null){
+                $footer_logo_update = new BusinessSetting(); 
+                $footer_logo_update->type = $data['type'];
+                $footer_logo_update->field_name = 'header_logo';
+            }
+            $footer_logo_update->value = $data['header_logo'];
+            $footer_logo_update->save();
         }
     }
 

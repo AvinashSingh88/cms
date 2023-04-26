@@ -18,7 +18,7 @@
             <div class="col-sm-12 w-75 mx-auto">
                 <div class="card">
                     <div class="card-body booking_card">
-                        <form method="post" action="{{ route('admin.business_setting.social_media.update') }}">
+                        <form method="post" action="{{ route('admin.website.update') }}">
                             @csrf
                             <div class="row formtype">
                                 <div class="col-md-12">

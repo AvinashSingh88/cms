@@ -3,6 +3,6 @@ namespace App\Repositories\Interfaces;
 use Illuminate\Http\Request;
 
 Interface BusinessRepositoryInterface{
-    public function getSocialMediaLink();
-    public function updateSocialMedia($data);
+    public function getBusinessSetupList($type);
+    public function updateWebsiteData($data);
 }

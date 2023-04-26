@@ -78,8 +78,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminAuthCheck'], 'as' => '
     Route::get('/users/change_status', [UserController::class, 'changeStatus'])->name('users.change_status');
     
     /** Route For Bussiness Setting page */
-    Route::get('/business_setting/social_media', [BusinessController::class, 'socialMedia'])->name('business_setting.social_media');
-    Route::post('/business_setting/social_media/update', [BusinessController::class, 'socialMediaUpdate'])->name('business_setting.social_media.update');
+    Route::get('/website/social_media', [BusinessController::class, 'socialMedia'])->name('website.social_media');
+    Route::get('/website/header', [BusinessController::class, 'websiteHeader'])->name('website.header');
+    Route::post('/website/update', [BusinessController::class, 'websiteSetupUpdate'])->name('website.update');
 
     Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 

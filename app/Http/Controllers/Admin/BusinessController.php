@@ -12,19 +12,38 @@ class BusinessController extends Controller
     }
 
     public function socialMedia(){
-        $social_meadia_values = $this->businessRepository->getSocialMediaLink();
+        $social_meadia_values = $this->businessRepository->getBusinessSetupList('social_media');
         return view('admin.business_setting.social_media', compact('social_meadia_values'));
     }
 
-    public function socialMediaUpdate(Request $request){
+    public function websiteHeader(){
+        $datas = $this->businessRepository->getBusinessSetupList('header_setup');
+        return view('admin.business_setting.header', compact('datas'));
+    }
+
+    public function websiteSetupUpdate(Request $request){
         $data = $request->validate([
             'type' => 'required|string|max:50',
             'field_names' => 'required|array',
             'values' => 'array',
         ]);
 
-        $this->businessRepository->updateSocialMedia($data);
+        if($request->has('header_logo')){
+            // $file = Input::file('header_logo');
+            // dd($file);
+            $data['header_logo'] = upload_asset($request->header_logo, 'logo');
+        }else{
+            $data['header_logo'] = NULL;
+        }
 
-        return redirect()->route('admin.business_setting.social_media')->with(session()->flash('alert-success', 'Social Media Updated Successfully'));
+        if($request->has('footer_logo')){
+            $data['footer_logo'] = upload_asset($request->footer_logo, 'logo');
+        }else{
+            $data['footer_logo'] = NULL;
+        }
+        
+        $this->businessRepository->updateWebsiteData($data);
+        return redirect()->route('admin.website.social_media')->with(session()->flash('alert-success', 'Social Media Updated Successfully'));
     }
+    
 }
