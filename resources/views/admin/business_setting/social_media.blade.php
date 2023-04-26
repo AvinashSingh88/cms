@@ -1,5 +1,5 @@
 @extends('admin.include.master')
-@section('title', 'Add New Category')
+@section('title', 'Update Social Media')
 @section('content')
 
 <div class="page-wrapper">
@@ -8,7 +8,7 @@
             <div class="row align-items-center">
                 <div class="col">
                     <div class="mt-2">
-                        <h4 class="card-title float-left mt-2">Add New Category</h4>
+                        <h4 class="card-title float-left mt-2">Update Social Media</h4>
                     </div>
                 </div>
             </div>
