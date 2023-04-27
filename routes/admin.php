@@ -82,6 +82,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminAuthCheck'], 'as' => '
     Route::get('/website/header', [BusinessController::class, 'websiteHeader'])->name('website.header');
     Route::get('/website/footer', [BusinessController::class, 'websiteFooter'])->name('website.footer');
     Route::post('/website/update', [BusinessController::class, 'websiteSetupUpdate'])->name('website.update');
+    Route::post('/website/update_widget', [BusinessController::class, 'websiteSetupUpdateWidget'])->name('website.update_widget');
 
     Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 

@@ -22,8 +22,10 @@ class BusinessController extends Controller
     }
 
     public function websiteFooter(){
-        $datas = $this->businessRepository->getBusinessSetupList('footer_setup');
-        return view('admin.business_setting.footer', compact('datas'));
+        $widget_one_data = $this->businessRepository->getBusinessSetupList('footer_widget_one_links');
+        $widget_two_data = $this->businessRepository->getBusinessSetupList('footer_widget_two_links');
+        $widget_three_data = $this->businessRepository->getBusinessSetupList('footer_widget_three_links');
+        return view('admin.business_setting.footer', compact('widget_one_data', 'widget_two_data', 'widget_three_data'));
     }
 
     /** Store or Update Business Setting for website setup */
@@ -45,8 +47,22 @@ class BusinessController extends Controller
         }else{
             $data['footer_logo'] = NULL;
         }
-        
+
         $this->businessRepository->updateWebsiteData($data);
+        return redirect()->back()->with(session()->flash('alert-success', 'Website Setup Updated Successfully'));
+    }
+
+    /** Store or Update Business Setting for website Widgets Setup */
+    public function websiteSetupUpdateWidget(Request $request){
+        $data = $request->validate([
+            'widget_types' => 'required|array',
+            'widget_lables' => 'required|array',
+            'widget_lables.*' => 'required|string',
+            'widget_links' => 'required|array',
+            'widget_links.*' => 'required|string',
+        ]);
+
+        $this->businessRepository->updateWebsiteWidgetData($data);
         return redirect()->back()->with(session()->flash('alert-success', 'Website Setup Updated Successfully'));
     }
     

@@ -45,4 +45,18 @@ class BusinessRepository implements BusinessRepositoryInterface
         }
     }
 
+    public function updateWebsiteWidgetData($data){
+        foreach($data['widget_types'] as $key => $val){
+            // dd($data['widget_lables'][0]);
+            $widget = BusinessSetting::where('type', $val)->where('field_name', $data['widget_lables'][$key])->first();
+            if($widget == null){
+                $widget = new BusinessSetting(); 
+                $widget->type = $val;
+                $widget->field_name = $data['widget_lables'][$key];
+            }
+            $widget->value = $data['widget_links'][$key];
+            $widget->save();
+        } 
+    }
+
 }
