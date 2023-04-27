@@ -34,13 +34,13 @@ class BusinessRepository implements BusinessRepositoryInterface
         }
 
         if($data['footer_logo']){
-            $footer_logo_update = BusinessSetting::where('type', $data['type'])->where('field_name', 'header_logo')->first();
+            $footer_logo_update = BusinessSetting::where('type', $data['type'])->where('field_name', 'footer_logo')->first();
             if($footer_logo_update == null){
                 $footer_logo_update = new BusinessSetting(); 
                 $footer_logo_update->type = $data['type'];
-                $footer_logo_update->field_name = 'header_logo';
+                $footer_logo_update->field_name = 'footer_logo';
             }
-            $footer_logo_update->value = $data['header_logo'];
+            $footer_logo_update->value = $data['footer_logo'];
             $footer_logo_update->save();
         }
     }

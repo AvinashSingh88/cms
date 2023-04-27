@@ -80,6 +80,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminAuthCheck'], 'as' => '
     /** Route For Bussiness Setting page */
     Route::get('/website/social_media', [BusinessController::class, 'socialMedia'])->name('website.social_media');
     Route::get('/website/header', [BusinessController::class, 'websiteHeader'])->name('website.header');
+    Route::get('/website/footer', [BusinessController::class, 'websiteFooter'])->name('website.footer');
     Route::post('/website/update', [BusinessController::class, 'websiteSetupUpdate'])->name('website.update');
 
     Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');

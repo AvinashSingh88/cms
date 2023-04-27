@@ -8,7 +8,7 @@
             <div class="row align-items-center">
                 <div class="col">
                     <div class="mt-2">
-                        <h4 class="card-title float-left mt-2">Website Header</h4>
+                        <h4 class="card-title float-left mt-2">Manage Website Header</h4>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                                         <label class="col-md-3"><strong>Header Logo </strong></label>
                                         <div class="col-md-9">
                                             <input type="file" class="form-control" name="header_logo"> 
-                                            @if(fetch_business_setting_value('header_setup', 'customer_support_number') != null)
+                                            @if(fetch_business_setting_value('header_setup', 'header_logo') != null)
                                                 <img src="{{ asset(fetch_business_setting_value('header_setup', 'header_logo')) }}" height=100 width=100>
                                             @endif
                                         </div>
@@ -61,7 +61,7 @@
                                         <label class="col-md-3"><strong>Sales Support</strong></label>
                                         <div class="col-md-9">
                                             <input type="hidden" class="form-control" name="field_names[]" value="sales_number" required> 
-                                            <input type="text" class="form-control" name="values[]" value="{{ fetch_business_setting_value('header_setup', 'sales_number') }}"> 
+                                            <input type="text" class="form-control" name="values[]" value="{{ fetch_business_setting_value('header_setup', 'sales_number') }}" pattern="+91[7-9]{1}[0-9]{9}"> 
                                         </div>
                                     </div>
                                 </div>

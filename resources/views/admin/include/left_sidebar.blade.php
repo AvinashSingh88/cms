@@ -49,11 +49,12 @@
 
 						<li class="submenu"> <a href="#"><i class="fas fa-calculator"></i> <span> Website Setup </span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
+								<li><a href="{{ url('admin/website/header') }}"> Header </a></li> 
+								<li><a href="{{ url('admin/website/footer') }}"> Footer </a></li> 
 								<li><a href="{{ url('admin/website/social_media') }}"> Social Media </a></li>
-								<li><a href="{{ url('admin/website/header') }}"> Social Media </a></li>
                             </ul>
 						</li>
-
+						
 					</ul>
 				</div>
 			</div>

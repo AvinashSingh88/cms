@@ -21,6 +21,12 @@ class BusinessController extends Controller
         return view('admin.business_setting.header', compact('datas'));
     }
 
+    public function websiteFooter(){
+        $datas = $this->businessRepository->getBusinessSetupList('footer_setup');
+        return view('admin.business_setting.footer', compact('datas'));
+    }
+
+    /** Store or Update Business Setting for website setup */
     public function websiteSetupUpdate(Request $request){
         $data = $request->validate([
             'type' => 'required|string|max:50',
@@ -29,8 +35,6 @@ class BusinessController extends Controller
         ]);
 
         if($request->has('header_logo')){
-            // $file = Input::file('header_logo');
-            // dd($file);
             $data['header_logo'] = upload_asset($request->header_logo, 'logo');
         }else{
             $data['header_logo'] = NULL;
@@ -43,7 +47,7 @@ class BusinessController extends Controller
         }
         
         $this->businessRepository->updateWebsiteData($data);
-        return redirect()->route('admin.website.social_media')->with(session()->flash('alert-success', 'Social Media Updated Successfully'));
+        return redirect()->back()->with(session()->flash('alert-success', 'Website Setup Updated Successfully'));
     }
     
 }
