@@ -55,7 +55,10 @@ class BusinessController extends Controller
     /** Store or Update Business Setting for website Widgets Setup */
     public function websiteSetupUpdateWidget(Request $request){
         $data = $request->validate([
-            'widget_types' => 'required|array',
+            'widget_type1' => 'required',
+            'widget_lable' => 'required',
+            'widget_name' => 'required',
+            'widget_type2' => 'required',
             'widget_lables' => 'required|array',
             'widget_lables.*' => 'required|string',
             'widget_links' => 'required|array',

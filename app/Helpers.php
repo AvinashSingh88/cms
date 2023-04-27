@@ -53,6 +53,13 @@
         }
     }
 
+    if (!function_exists('fetch_business_setting_data')) {
+        function fetch_business_setting_data($type)
+        {
+            return BusinessSetting::select('field_name', 'value')->where('type', $type)->first();
+        }
+    }
+
 
 
 
