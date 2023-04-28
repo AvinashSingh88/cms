@@ -30,7 +30,16 @@
 						<li class="submenu"> <a href="#"><i class="fas fa-calculator"></i> <span> CMS </span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
 								<li><a href="{{ url('admin/pages') }}"> All CMS Pages </a></li>
-								<li><a href="{{ url('admin/pages/create') }}"> Add New CMS Page </a></li>
+								<li><a href="{{ url('admin/master_pages') }}"> All Master Pages </a></li>
+								<li><a href="{{ url('admin/master_page_sections') }}"> All Master Page Sections </a></li>
+                            </ul>
+						</li>
+
+						<li class="submenu"> <a href="#"><i class="fas fa-calculator"></i> <span> Website Setup </span> <span class="menu-arrow"></span></a>
+							<ul class="submenu_class" style="display: none;">
+								<li><a href="{{ url('admin/website/header') }}"> Header </a></li> 
+								<li><a href="{{ url('admin/website/footer') }}"> Footer </a></li> 
+								<li><a href="{{ url('admin/website/social_media') }}"> Social Media </a></li>
                             </ul>
 						</li>
 
@@ -44,14 +53,6 @@
 						<li class="submenu"> <a href="#"><i class="fas fa-calculator"></i> <span> Customer Leads </span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
 								<li><a href="{{ url('admin/customer/leads') }}"> All Customer Leads </a></li>
-                            </ul>
-						</li>
-
-						<li class="submenu"> <a href="#"><i class="fas fa-calculator"></i> <span> Website Setup </span> <span class="menu-arrow"></span></a>
-							<ul class="submenu_class" style="display: none;">
-								<li><a href="{{ url('admin/website/header') }}"> Header </a></li> 
-								<li><a href="{{ url('admin/website/footer') }}"> Footer </a></li> 
-								<li><a href="{{ url('admin/website/social_media') }}"> Social Media </a></li>
                             </ul>
 						</li>
 						

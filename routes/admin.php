@@ -68,6 +68,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminAuthCheck'], 'as' => '
     
     /** Route For CMS Page */
     Route::resource('/pages', CmsPageController::class);
+
+    Route::get('/master_pages', [CmsPageController::class, 'masterPageIndex'])->name('master_pages.index');
+    Route::get('/master_pages/create', [CmsPageController::class, 'masterPageCreate'])->name('master_pages.create');
+    Route::post('/master_pages/store', [CmsPageController::class, 'masterPageStore'])->name('master_pages.store');
+    Route::get('/master_pages/{id}/edit', [CmsPageController::class, 'masterPageEdit'])->name('master_pages.edit');
+    Route::put('/master_pages/update/{id}', [CmsPageController::class, 'masterPageUpdate'])->name('master_pages.update');
+    
+    Route::get('/master_page_sections', [CmsPageController::class, 'masterPageSectionIndex'])->name('master_page_sections.index');
+    Route::get('/master_page_sections/create', [CmsPageController::class, 'masterPageSectionCreate'])->name('master_page_sections.create');
+    Route::post('/master_page_sections/store', [CmsPageController::class, 'masterPageSectionStore'])->name('master_page_sections.store');
+    Route::get('/master_page_sections/{id}/edit', [CmsPageController::class, 'masterPageSectionEdit'])->name('master_page_sections.edit');
+    Route::put('/master_page_sections/update/{id}', [CmsPageController::class, 'masterPageSectionUpdate'])->name('master_page_sections.update');
+    
     Route::get('/customer/leads', [CmsPageController::class, 'customerLeadList'])->name('customer.leads');
 
     /** Route For Testimonial Page */
