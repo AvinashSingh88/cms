@@ -17,10 +17,26 @@
 	<link rel="stylesheet" href="{{ asset('assets/assets_admin/css/style.css')}}"> </head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-
+	
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css"
+        rel="stylesheet" />
 
 	<!-- Used for Tiny Text Editor -->
 	<script src="https://cdn.tiny.cloud/1/idhc3eu5xqredw5w170x7bl771ac2zy9rbggh7mm04xrps7q/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+	<style>
+        .bootstrap-tagsinput .tag {
+            margin-right: 2px;
+            color: #ffffff;
+            background: #2196f3;
+            padding: 3px 7px;
+            border-radius: 3px;
+        }
+        .bootstrap-tagsinput {
+            width: 100%;
+        }
+    </style>
+
 </head>
 <body>
 	<div class="main-wrapper">
@@ -54,6 +70,9 @@
 	<script src="{{ asset('assets/assets_admin/plugins/raphael/raphael.min.js')}}"></script>
 	<script src="{{ asset('assets/assets_admin/js/script.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script>
+
 	<script>
 		//Used for Tiny Text editor
 		tinymce.init({

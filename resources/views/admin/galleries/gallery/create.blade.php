@@ -34,14 +34,6 @@
                                     @endif
                                 </div>
 
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Title <span class="text-danger">*</span> </label>
-                                        <input type="text" class="form-control" name="title"> 
-                                        
-                                    </div>
-                                </div>
-
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Category <span class="text-danger">*</span> </label>
@@ -78,6 +70,13 @@
                                     </div>
                                 </div>
 
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Image Description <span class="text-danger">*</span> </label>
+                                        <textarea class="form-control" name="description" id="description"></textarea> 
+                                    </div>
+                                </div>
+
                             </div>	
                             <button type="submit" class="btn btn-primary buttonedit1">Add</button>
                         </form>
@@ -94,9 +93,9 @@
 
 @section('script')
     <script>
-        
-    
-
+        tinymce.init({
+            selector: 'textarea#description',
+        });
         $(document).ready(function () {
             /** Get Sub category list on change on parent category */
             $('#category_id').on('change', function () {

@@ -3,23 +3,29 @@ namespace App\Repositories\Interfaces;
 use Illuminate\Http\Request;
 
 Interface CmsPageRepositoryInterface{
-    
-    public function getMenuList();
-    public function getMasterPageList();
     public function getCmsPageList();
+    public function getPageSectionList($page_id);
+    public function allCustomerLeadList();
+    public function allCareerEnquiryList();
+    public function allSubscriberList();
     
+    /** CMS Page Interface Start */
     public function allCmsPages();
     public function storeCmsPage($request, $data);
     public function findCmsPage($id);
-    public function updateCmsPage($data, $id);
+    public function updateCmsPage($data, $id); 
+    /** CMS Page Interface End */
+    
+    /** Page Section Interface Start */
+    public function allPageSectionList();
+    public function findPageSection($id);
+    public function storePageSection($data, $type);
+    /** Page Section Interface End */
 
-    public function allMasterPageList(); 
-    public function storeMasterPage($data, $type); 
-    public function findMasterPage($id); 
+    /** Section Data Interface Start */
+    public function allSectionDataList();
+    public function findSectionData($id);
+    public function storeSectionData($data, $type);
+    /** Section Data Interface End */
 
-    public function allMasterPageSectionList(); 
-    public function storeMasterPageSection($data, $type); 
-    public function findMasterPageSection($id); 
-
-    public function allCustomerLeadList();
 }

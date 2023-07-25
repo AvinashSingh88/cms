@@ -42,8 +42,8 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Designation <span class="text-danger">*</span> </label>
-                                        <input type="text" class="form-control" name="designation"> 
+                                        <label>Title <span class="text-danger">*</span> </label>
+                                        <input type="text" class="form-control" name="title"> 
                                     </div>
                                 </div>
 

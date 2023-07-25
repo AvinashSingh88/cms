@@ -33,8 +33,7 @@ class BlogController extends Controller
      */
     public function create(){
         $countries =  $this->blogRepository->getCountryList();
-        $categories =  $this->blogRepository->getCategoryList();
-        return view('admin.blogs.create', compact('countries', 'categories'));
+        return view('admin.blogs.create', compact('countries'));
     }
 
     public function generateSlug(){
@@ -49,20 +48,22 @@ class BlogController extends Controller
      */
     public function store(Request $request){
         $data = $request->validate([
+            'type' => 'required',
             'category_id' => 'required',
-            'sub_category_id' => 'nullable',
             'country' => 'nullable',
             'title' => 'required|string|max:255',
             'description' => 'required',
             // 'blog_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'status' => 'required',
+            'tags' => 'required',
             'meta_title' => 'nullable',
             'meta_tag' => 'nullable',
             'meta_description' => 'nullable',
         ]);
+        // dd($request->tags);
 
         if($request->has('blog_image')){
-            $data['blog_image'] = upload_asset($request->blog_image);
+            $data['blog_image'] = upload_asset($request->blog_image, $request->type);
         }else{
             $data['blog_image'] = NULL;
         }
@@ -89,11 +90,12 @@ class BlogController extends Controller
      */
     public function edit($id){
         $blog = $this->blogRepository->findBlog($id);
+        // json_encode(explode(",", $data['tags']))
+        // dd(json_decode($blog->tags));
         if($blog){
             $countries =  $this->blogRepository->getCountryList();
-            $subcategories =  $this->blogRepository->getSubCategoryList($blog->category_id);
-            $categories =  $this->blogRepository->getCategoryList();
-            return view('admin.blogs.update', compact('blog', 'categories', 'subcategories', 'countries'));
+            $categories =  $this->blogRepository->getCategoryList($blog->type);
+            return view('admin.blogs.update', compact('blog', 'categories', 'countries'));
         }
     }
 
@@ -105,20 +107,21 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id){
         $data = $request->validate([
+            'type' => 'required',
             'category_id' => 'required|not_in:0',
-            'sub_category_id' => 'nullable',
-            'country' => 'required|not_in:0',
+            'country' => 'nullable|not_in:0',
             'title' => 'required|string|max:255',
             'description' => 'required',
             // 'blog_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'status' => 'required',
+            'tags' => 'required',
             'meta_title' => 'nullable',
             'meta_tag' => 'nullable',
             'meta_description' => 'nullable',
         ]);
 
         if($request->has('blog_image')){
-            $data['blog_image'] = upload_asset($request->blog_image);
+            $data['blog_image'] = upload_asset($request->blog_image, $request->type);
         }else{
             $data['blog_image'] = NULL;
         }
@@ -140,10 +143,15 @@ class BlogController extends Controller
         return redirect()->route('admin.blogs.index')->with(session()->flash('alert-success', 'Blog Delete Successfully'));
     }
 
-    public function fetchSubCategory(Request $request){
-        $data['sub_categories'] = $this->blogRepository->getSubCategoryList($request->category_id);
+    public function fetchCategory(Request $request){
+        $data['categories'] = $this->blogRepository->getCategoryList($request->type);
         return response()->json($data);
     }
+
+    // public function fetchSubCategory(Request $request){
+    //     $data['sub_categories'] = $this->blogRepository->getSubCategoryList($request->category_id);
+    //     return response()->json($data);
+    // }
 
     public function showLikes($id){
         $blogs = $this->blogRepository->getAllLike($id);

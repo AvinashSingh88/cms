@@ -25,7 +25,7 @@ class GalleryRepository implements GalleryRepositoryInterface
     {
         $gallery = new Gallery();
         $gallery->category_id = $data['category_id'];
-        $gallery->title = $data['title'];
+        $gallery->description = $data['description'];
         
         if($data['image']){
             $gallery->image = $data['image'];
@@ -53,7 +53,7 @@ class GalleryRepository implements GalleryRepositoryInterface
     {
         $gallery = Gallery::where('id', $id)->first();
         $gallery->category_id = $data['category_id'];
-        $gallery->title = $data['title'];
+        $gallery->description = $data['description'];
         
         if($data['image']){
             $gallery->image = $data['image'];

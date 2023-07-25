@@ -27,8 +27,24 @@ use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\Repositories\UserRepository;
 use App\Repositories\Interfaces\BusinessRepositoryInterface;
 use App\Repositories\BusinessRepository;
-use App\Repositories\Interfaces\WebCommonRepositoryInterface;
-use App\Repositories\WebCommonRepository;
+use App\Repositories\Interfaces\FaqRepositoryInterface;
+use App\Repositories\FaqRepository;
+use App\Repositories\Interfaces\StaffRepositoryInterface;
+use App\Repositories\StaffRepository;
+use App\Repositories\Interfaces\ServiceRepositoryInterface;
+use App\Repositories\ServiceRepository;
+use App\Repositories\Interfaces\IndustryRepositoryInterface;
+use App\Repositories\IndustryRepository;
+use App\Repositories\Interfaces\CareerRepositoryInterface;
+use App\Repositories\CareerRepository;
+
+
+/** Bind for Frontend */
+use App\Repositories\Interfaces\WebInterface\CommonRepositoryInterface;
+use App\Repositories\WebRepo\CommonRepository;
+use App\Repositories\Interfaces\WebInterface\WebServiceRepositoryInterface;
+use App\Repositories\WebRepo\WebServiceRepository;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -51,10 +67,16 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(TestimonialRepositoryInterface::class, TestimonialRepository::class);
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
         $this->app->bind(BusinessRepositoryInterface::class, BusinessRepository::class);
-    
+        $this->app->bind(FaqRepositoryInterface::class, FaqRepository::class);
+        $this->app->bind(StaffRepositoryInterface::class, StaffRepository::class);
+        $this->app->bind(ServiceRepositoryInterface::class, ServiceRepository::class);
+        $this->app->bind(IndustryRepositoryInterface::class, IndustryRepository::class);
+        $this->app->bind(CareerRepositoryInterface::class, CareerRepository::class);
+        
+
         /** Bind for Frontend */
-        $this->app->bind(WebCommonRepositoryInterface::class, WebCommonRepository::class);
-    
+        $this->app->bind(CommonRepositoryInterface::class, CommonRepository::class);
+        $this->app->bind(WebServiceRepositoryInterface::class, WebServiceRepository::class);
     }
 
     /**

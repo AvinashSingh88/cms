@@ -15,7 +15,7 @@ class TestimonialRepository implements TestimonialRepositoryInterface
     {
         $testimonial = new Testimonial();
         $testimonial->name = $data['name'];
-        $testimonial->designation = $data['designation'];
+        $testimonial->designation = $data['title'];
         $testimonial->message = $data['message'];
         if($data['img']){
             $testimonial->img = $data['img'];
@@ -37,7 +37,7 @@ class TestimonialRepository implements TestimonialRepositoryInterface
     {
         $testimonial = Testimonial::find($id);
         $testimonial->name = $data['name'];
-        $testimonial->designation = $data['designation'];
+        $testimonial->designation = $data['title'];
         $testimonial->message = $data['message'];
         if($data['img']){
             $testimonial->img = $data['img'];

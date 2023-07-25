@@ -34,14 +34,27 @@
                                     @endif
                                 </div>
 
-                                <div class="col-md-8">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Category Name </label>
                                         <input type="text" class="form-control" name="title" value="{{$category->title}}" required>  
                                     </div>
                                 </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Type </label>
+                                        <select class="form-control" name="type" id="type">
+                                            <option value="">Select Type</option>
+                                            <option value="blog" @if($category->type == "blog") selected @endif>Blog</option>
+                                            <option value="news" @if($category->type == "news") selected @endif>News</option>
+                                            <option value="event" @if($category->type == "event") selected @endif>Event</option>
+                                            <option value="case_study" @if($category->type == "case_study") selected @endif>Case Study</option>
+                                        </select> 
+                                    </div>
+                                </div>
                     
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Status </label>
                                         <select class=" form-control" id="status" name="status" required>

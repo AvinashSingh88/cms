@@ -12,7 +12,7 @@ class CustomerLead extends Model
     protected $fillable = [
         'name',
         'email',
-        'subject',
+        'contact',
         'message'
     ];
 

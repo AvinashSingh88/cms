@@ -36,6 +36,7 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th>Type</th>
                                         <th>Name</th>
                                         <th>Status</th>
                                         <th>Date</th>
@@ -46,6 +47,19 @@
                                     @foreach ($categories as $key => $value)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
+
+                                        @if($value->type == "blog")
+                                        <td>Blog</td>
+                                        @elseif($value->type == "news")
+                                        <td>News</td>
+                                        @elseif($value->type == "event")
+                                        <td>Event</td>
+                                        @elseif($value->type == "case_study")
+                                        <td>Case Study</td>
+                                        @else
+                                        <td></td>
+                                        @endif
+                                        
                                         <td>{{ $value->title }}</td>
                                         <td>
                                             <div class="actions"> @if($value->status == 1) <a href="#" class="btn btn-sm bg-success-light mr-2">Active</a> @else <a href="#" class="btn btn-sm bg-danger-light mr-2">Inactive</a> @endif </div>

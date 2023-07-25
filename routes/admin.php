@@ -17,6 +17,12 @@ use App\Http\Controllers\Admin\CmsPageController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\BusinessController;
+use App\Http\Controllers\Admin\FaqController;
+use App\Http\Controllers\Admin\StaffController;
+use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\IndustryController;
+use App\Http\Controllers\Admin\CareerController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -36,8 +42,8 @@ Route::get('/clear-cache', function () {
     Artisan::call('config:clear');
     Artisan::call('view:clear');
     Artisan::call('route:clear');
-    return "Cache is cleared by @AviSingh";
-});
+    return "Cache is cleared by @AviSinghAdmin";
+})->name('clear-cache');
 
 Route::get('admin/auth/login', [LoginController::class, 'login'])->name('admin.auth.login')->middleware('AlreadyLoggedIn');
 Route::get('admin', [LoginController::class, 'login'])->name('admin')->middleware('AlreadyLoggedIn');
@@ -56,7 +62,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminAuthCheck'], 'as' => '
     
     /** Route for Blog */
     Route::resource('/blogs', BlogController::class);
-    Route::post('/blogs/fetch_subcategory', [BlogController::class, 'fetchSubCategory'])->name('blogs.fetch_subcategory');
+    // Route::post('/blogs/fetch_subcategory', [BlogController::class, 'fetchSubCategory'])->name('blogs.fetch_subcategory');
+    Route::post('/blogs/fetch_category', [BlogController::class, 'fetchCategory'])->name('blogs.fetch_category');
     Route::get('/blogs/show_comments/{blog_id}', [BlogController::class, 'showComments'])->name('blogs.show_comments');
     Route::get('/blogs/show_likes/{blog_id}', [BlogController::class, 'showLikes'])->name('blogs.show_likes');
     Route::get('/blogs/show_views/{blog_id}', [BlogController::class, 'showViews'])->name('blogs.show_views');
@@ -68,20 +75,25 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminAuthCheck'], 'as' => '
     
     /** Route For CMS Page */
     Route::resource('/pages', CmsPageController::class);
-
-    Route::get('/master_pages', [CmsPageController::class, 'masterPageIndex'])->name('master_pages.index');
-    Route::get('/master_pages/create', [CmsPageController::class, 'masterPageCreate'])->name('master_pages.create');
-    Route::post('/master_pages/store', [CmsPageController::class, 'masterPageStore'])->name('master_pages.store');
-    Route::get('/master_pages/{id}/edit', [CmsPageController::class, 'masterPageEdit'])->name('master_pages.edit');
-    Route::put('/master_pages/update/{id}', [CmsPageController::class, 'masterPageUpdate'])->name('master_pages.update');
     
-    Route::get('/master_page_sections', [CmsPageController::class, 'masterPageSectionIndex'])->name('master_page_sections.index');
-    Route::get('/master_page_sections/create', [CmsPageController::class, 'masterPageSectionCreate'])->name('master_page_sections.create');
-    Route::post('/master_page_sections/store', [CmsPageController::class, 'masterPageSectionStore'])->name('master_page_sections.store');
-    Route::get('/master_page_sections/{id}/edit', [CmsPageController::class, 'masterPageSectionEdit'])->name('master_page_sections.edit');
-    Route::put('/master_page_sections/update/{id}', [CmsPageController::class, 'masterPageSectionUpdate'])->name('master_page_sections.update');
+    /** Route For Page Section */
+    Route::get('/page_sections', [CmsPageController::class, 'pageSectionIndex'])->name('page_sections.index');
+    Route::get('/page_sections/create', [CmsPageController::class, 'pageSectionCreate'])->name('page_sections.create');
+    Route::post('/page_sections/store', [CmsPageController::class, 'pageSectionStore'])->name('page_sections.store');
+    Route::get('/page_sections/{id}/edit', [CmsPageController::class, 'pageSectionEdit'])->name('page_sections.edit');
+    Route::put('/page_sections/update/{id}', [CmsPageController::class, 'pageSectionUpdate'])->name('page_sections.update');
+    
+    /** Route For Section Data */
+    Route::get('/section_data', [CmsPageController::class, 'sectionDataIndex'])->name('section_data.index');
+    Route::get('/section_data/create', [CmsPageController::class, 'sectionDataCreate'])->name('section_data.create');
+    Route::post('/section_data/fetch_section', [CmsPageController::class, 'fetchSection'])->name('section_data.fetch_section');
+    Route::post('/section_data/store', [CmsPageController::class, 'sectionDataStore'])->name('section_data.store');
+    Route::get('/section_datas/{id}/edit', [CmsPageController::class, 'sectionDataEdit'])->name('section_data.edit');
+    Route::put('/section_datas/update/{id}', [CmsPageController::class, 'sectionDataUpdate'])->name('section_data.update');
     
     Route::get('/customer/leads', [CmsPageController::class, 'customerLeadList'])->name('customer.leads');
+    Route::get('/career/enquiry', [CmsPageController::class, 'careerEnquiryList'])->name('career.enquiry');
+    Route::get('/subscribers', [CmsPageController::class, 'subscriberList'])->name('subscribers');
 
     /** Route For Testimonial Page */
     Route::resource('/testimonials', TestimonialController::class);
@@ -96,7 +108,21 @@ Route::group(['prefix' => 'admin', 'middleware' => ['AdminAuthCheck'], 'as' => '
     Route::get('/website/footer', [BusinessController::class, 'websiteFooter'])->name('website.footer');
     Route::post('/website/update', [BusinessController::class, 'websiteSetupUpdate'])->name('website.update');
     Route::post('/website/update_widget', [BusinessController::class, 'websiteSetupUpdateWidget'])->name('website.update_widget');
+    Route::get('/website/office_setup', [BusinessController::class, 'officeSetup'])->name('website.office_setup');
+    Route::post('/website/update_office_setup', [BusinessController::class, 'updateOfficeSetup'])->name('website.update_office_setup');
+    
+    Route::resource('/faqs', FaqController::class);
 
+    Route::resource('/staffs', StaffController::class);
+
+    /** Route For CMS Page */
+    Route::resource('/services', ServiceController::class);
+
+    Route::resource('/industry', IndustryController::class);
+
+    Route::resource('/careers', CareerController::class);
+    
+   
     Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
-
+    
 });

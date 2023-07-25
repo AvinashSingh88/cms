@@ -32,7 +32,7 @@
                                         <th>#</th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Subject</th>
+                                        <th>Conatct</th>
                                         <th>Message</th>
                                         <th>Created At</th>
                                     </tr>
@@ -43,7 +43,7 @@
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $value->name }}</td>
                                         <td>{{ $value->email }}</td>
-                                        <td>{{ $value->subject }}</td>
+                                        <td>{{ $value->contact }}</td>
                                         <td>{{ $value->message }}</td>
                                         <td>{{ convert_datetime_to_date_format($value->created_at, 'd M Y') }}</td>
                                     </tr>

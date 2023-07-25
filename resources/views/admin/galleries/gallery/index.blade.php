@@ -24,7 +24,6 @@
             <div class="col-sm-12">
                 <div class="card card-table">
                     <div class="card-body booking_card">
-
                         <div class="row">
                             <div class="col-md-12">
                                 <h4 class="card-title float-left mt-2">Gallery List</h4>
@@ -37,7 +36,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Category Name</th>
-                                        <th>Title</th>
+                                        <th>Description</th>
                                         <th>Status</th>
                                         <th>Created At</th>
                                         <th class="text-right">Actions</th>
@@ -48,7 +47,7 @@
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $value->parent_name }}</td>
-                                        <td>{{ $value->title }}</td>
+                                        <td class="text-black">{!! $value->description !!}</td>
                                         <td>
                                             <div class="actions"> @if($value->status == 1) <a href="#" class="btn btn-sm bg-success-light mr-2">Active</a> @else <a href="#" class="btn btn-sm bg-danger-light mr-2">Inactive</a> @endif </div>
                                         </td>

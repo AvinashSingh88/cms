@@ -10,13 +10,10 @@ use Illuminate\Pagination\Paginator;
 class CmsPage extends Model
 {
     use HasFactory;
-
     protected $fillable = [
+        'parent_id',
         'title',
-        'description',
-        'menu_id',
-        'banner_image',
-        'slug',
+        'page_url',
         'status',
         'created_by',
     ];
@@ -24,37 +21,21 @@ class CmsPage extends Model
      /**
      * Boot the model.
      */
-    protected static function boot()
-    {
+    protected static function boot(){
         parent::boot();
         Paginator::useBootstrap();
-
-        static::created(function ($post) {
-            $post->slug = $post->createSlug($post->title);
-            $post->save();
-        });
     }
 
-    /** 
-     * create slug
-     *
-     * @return response()
-     */
-    private function createSlug($title)
-    {
-        if (static::whereSlug($slug = Str::slug($title))->exists()) {
-            $max = static::whereTitle($title)->latest('id')->skip(1)->value('slug');
+    public function categories(){
+        return $this->hasMany(CmsPage::class, 'parent_id');
+    }
 
-            if (is_numeric($max[-1])) {
-                return preg_replace_callback('/(\d+)$/', function ($mathces) {
-                    return $mathces[1] + 1;
-                }, $max);
-            }
+    public function childrenCategories(){
+        return $this->hasMany(CmsPage::class, 'parent_id')->with('categories');
+    }
 
-            return "{$slug}-2";
-        }
-
-        return $slug;
+    public function parentCategory(){
+        return $this->belongsTo(CmsPage::class, 'parent_id');
     }
 
 }

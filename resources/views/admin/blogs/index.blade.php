@@ -8,7 +8,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <a class="btn btn-primary float-right" href="{{ url('admin/blogs/create') }}">Add New Blog</a>
+                    <a class="btn btn-primary float-right" href="{{ url('admin/blogs/create') }}">Add New</a>
 
                     <div class="breadcrumb mt-3 border-bottom pb-2">
                         <a href="{{ url('') }}"><i class="fa fa-home" aria-hidden="true"></i> Home</a>/Blogs
@@ -33,8 +33,8 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th>Type</th>
                                         <th>Category Name</th>
-                                        <th>Sub Category</th>
                                         <th>Title</th>
                                         <th>Status</th>
                                         <th>Created At</th>
@@ -45,8 +45,20 @@
                                     @foreach ($blogs as $key => $value)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
+
+                                        @if($value->type == "blog")
+                                        <td>Blog</td>
+                                        @elseif($value->type == "news")
+                                        <td>News</td>
+                                        @elseif($value->type == "event")
+                                        <td>Event</td>
+                                        @elseif($value->type == "case_study")
+                                        <td>Case Study</td>
+                                        @else
+                                        <td></td>
+                                        @endif
+                                        
                                         <td>{{ $value->parent_name }}</td>
-                                        <td>{{ $value->sub_category_name }}</td>
                                         <td>{{ $value->title }}</td>
                                         <td>
                                             <div class="actions"> @if($value->status == 1) <a href="#" class="btn btn-sm bg-success-light mr-2">Active</a> @else <a href="#" class="btn btn-sm bg-danger-light mr-2">Inactive</a> @endif </div>

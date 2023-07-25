@@ -65,4 +65,25 @@ class BusinessRepository implements BusinessRepositoryInterface
         $widget_link->save();
     }
 
+    public function updateOfficeSetuptData($data){
+        // dd($data);
+        $office_type = BusinessSetting::where('type', $data['office_type'])->first();
+        if($office_type == null){
+            $office_type = new BusinessSetting(); 
+            $office_type->type = $data['office_type'];
+        }
+        $office_type->field_name = json_encode($data['email']);
+        $office_type->value = json_encode($data['contact']);
+        $office_type->save();
+
+        $office_address = BusinessSetting::where('type', $data['address_type'])->first();
+        if($office_address == null){
+            $office_address = new BusinessSetting(); 
+            $office_address->type = $data['address_type'];
+        }
+        $office_address->field_name = json_encode($data['address']);
+        $office_address->value = json_encode($data['timing']);
+        $office_address->save();
+    }
+
 }

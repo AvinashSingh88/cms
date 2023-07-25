@@ -34,7 +34,7 @@
                                     @endif
                                 </div>
 
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Select Parent </label>
                                         <select class="form-control" name="parent_id" required>
@@ -42,6 +42,16 @@
                                             @foreach($menus AS $menu)
                                                 <option value="{{$menu->id}}" @if($menu->id == $page->parent_id) selected @endif>{{$menu->title}}</option>
                                             @endforeach
+                                        </select> 
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Status </label>
+                                        <select class=" form-control" name="status" required>
+                                            <option value="1" @if($page->status == 1) selected @endif>Active</option>
+                                            <option value="2" @if($page->status == 2) selected @endif>Inactive</option>
                                         </select> 
                                     </div>
                                 </div>
@@ -55,28 +65,8 @@
 
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Description</label>
-                                        <textarea class="form-control" rows="4" name="description" id="description">{{$page->description}}</textarea>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Banner Image </label>
-                                        <input class="form-control" type="file" name="banner_image">
-                                        @if($page->banner_image)
-                                            <img src="{{$page->banner_image}}" class="mt-2 rounded" width="80" height="50">
-                                        @endif
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Status </label>
-                                        <select class=" form-control" name="status" required>
-                                            <option value="1" @if($page->status == 1) selected @endif>Active</option>
-                                            <option value="2" @if($page->status == 2) selected @endif>Inactive</option>
-                                        </select> 
+                                        <label>Page URL <span class="text-danger"></span> </label>
+                                        <input type="text" class="form-control" name="page_url" value="{{$page->page_url}}"> 
                                     </div>
                                 </div>
 

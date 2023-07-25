@@ -34,7 +34,7 @@
                                     @endif
                                 </div>
 
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Select Parent <span class="text-danger">*</span> </label>
                                         <select class="form-control" name="parent_id">
@@ -42,6 +42,16 @@
                                             @foreach($categories AS $menu)
                                                 <option value="{{$menu->id}}">{{$menu->title}}</option>
                                             @endforeach
+                                        </select> 
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Status <span class="text-danger">*</span></label>
+                                        <select class=" form-control" name="status">
+                                            <option value="1" selected>Active</option>
+                                            <option value="2">Inactive</option>
                                         </select> 
                                     </div>
                                 </div>
@@ -55,25 +65,8 @@
 
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Description <span class="text-danger">*</span></label>
-                                        <textarea class="form-control" id="description" name="description"></textarea>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Banner Image </label>
-                                        <input class="form-control" type="file" name="banner_image">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Status <span class="text-danger">*</span></label>
-                                        <select class=" form-control" name="status">
-                                            <option value="1" selected>Active</option>
-                                            <option value="2">Inactive</option>
-                                        </select> 
+                                        <label>Page URL <span class="text-danger"></span> </label>
+                                        <input type="text" class="form-control" name="page_url" placeholder="https://raspl.com/index"> 
                                     </div>
                                 </div>
 

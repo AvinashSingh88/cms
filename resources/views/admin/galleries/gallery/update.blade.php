@@ -34,13 +34,6 @@
                                     @endif
                                 </div>
 
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Title </label>
-                                        <input type="text" class="form-control" name="title" value="{{$gallery->title}}" required> 
-                                    </div>
-                                </div>
-
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Category </label>
@@ -68,7 +61,7 @@
                                         <label>Image </label>
                                         <input class="form-control" type="file" name="image">
                                         @if($gallery->image)
-                                            <img src="{{$gallery->image}}" class="mt-2 rounded" width="80" height="50">
+                                            <img src="{{asset($gallery->image)}}" class="mt-2 rounded" width="80" height="50">
                                         @endif
                                     </div>
                                 </div>
@@ -78,8 +71,15 @@
                                         <label> Icon </label>
                                         <input class="form-control" type="file" name="icon">
                                         @if($gallery->icon)
-                                            <img src="{{$gallery->icon}}" class="mt-2 rounded" width="80" height="50">
+                                            <img src="{{asset($gallery->icon)}}" class="mt-2 rounded" width="80" height="50">
                                         @endif
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Image Description <span class="text-danger">*</span> </label>
+                                        <textarea class="form-control" name="description" id="description">{!! $gallery->description !!}</textarea> 
                                     </div>
                                 </div>
 
@@ -99,6 +99,9 @@
 
 @section('script')
     <script>
+        tinymce.init({
+            selector: 'textarea#description',
+        });
         $(document).ready(function () {
             /** Get Sub category list on change on parent category */
             $('#category_id').on('change', function () {

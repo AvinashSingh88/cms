@@ -51,6 +51,7 @@ class CategoryController extends Controller
     {
         $data = $request->validate([
             'title' => 'required|unique:categories|string|max:255',
+            'type' => 'required',
             'status' => 'required',
         ]);
 
@@ -94,8 +95,8 @@ class CategoryController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
+            'type' => 'required',
             'status' => 'required',
-            // 'updated_by' => 'required',
         ]);
         $this->categoryRepository->updateCategory($request->all(), $id);
         return redirect()->route('admin.categories.index')->with(session()->flash('alert-success', 'Category Updated Successfully'));

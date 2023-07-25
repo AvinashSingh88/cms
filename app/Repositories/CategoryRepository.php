@@ -25,6 +25,7 @@ class CategoryRepository implements CategoryRepositoryInterface
         $updated_by = session('LoggedUser')->id;
 
         $category = Category::where('id', $id)->first();
+        $category->type = $data['type'];
         $category->title = $data['title'];
         $category->status = $data['status'];
         $category->updated_by = $updated_by;

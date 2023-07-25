@@ -8,7 +8,7 @@
             <div class="row align-items-center">
                 <div class="col">
                     <div class="mt-2">
-                        <h4 class="card-title float-left mt-2">Update Blog</h4>
+                        <h4 class="card-title float-left mt-2">Update</h4>
                     </div>
                 </div>
             </div>
@@ -36,23 +36,24 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Category </label>
-                                        <select class=" form-control" name="category_id" id="category_id" required>
-                                            <option value="">Select Category</option>
-                                            @foreach($categories AS $category)
-                                                <option value="{{$category->id}}" @if($category->id == $blog->category_id) selected @endif>{{$category->title}}</option>
-                                            @endforeach
+                                        <label>Type </label>
+                                        <select class="form-control" name="type" id="type">
+                                            <option value="">Select Type</option>
+                                            <option value="blog" @if($blog->type == "blog") selected @endif>Blog</option>
+                                            <option value="news" @if($blog->type == "news") selected @endif>News</option>
+                                            <option value="event" @if($blog->type == "event") selected @endif>Event</option>
+                                            <option value="case_study" @if($blog->type == "case_study") selected @endif>Case Study</option>
                                         </select> 
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Sub Category </label>
-                                        <select class=" form-control" name="sub_category_id" id="sub_category_id" required>
-                                            <option value="">Select Sub Category</option>
-                                            @foreach($subcategories AS $category)
-                                                <option value="{{$category->id}}" @if($category->id == $blog->sub_category_id) selected @endif>{{$category->title}}</option>
+                                        <label>Category </label>
+                                        <select class=" form-control" name="category_id" id="category_id" required>
+                                            <option value="">Select Category</option>
+                                            @foreach($categories AS $category)
+                                                <option value="{{$category->id}}" @if($category->id == $blog->category_id) selected @endif>{{$category->title}}</option>
                                             @endforeach
                                         </select> 
                                     </div>
@@ -77,12 +78,12 @@
                                         <label>Blog Image </label>
                                         <input class="form-control" type="file" name="blog_image">
                                         @if($blog->blog_image)
-                                            <img src="{{$blog->blog_image}}" class="mt-2 rounded" width="80" height="50">
+                                            <img src="{{asset($blog->blog_image)}}" class="mt-2 rounded" width="80" height="50">
                                         @endif
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Country </label>
                                         <select class=" form-control" name="country">
@@ -94,13 +95,20 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Status </label>
                                         <select class=" form-control" name="status" required>
                                             <option value="1" @if($blog->status == 1) selected @endif>Active</option>
                                             <option value="0" @if($blog->status == 2) selected @endif>Inactive</option>
                                         </select> 
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Tags </label>
+                                        <input class="form-control" type="text" data-role="tagsinput" name="tags" value="{{ implode(",", json_decode($blog->tags)) }}">
                                     </div>
                                 </div>
 
@@ -144,31 +152,33 @@
         tinymce.init({
             selector: 'textarea#description',
         });
+
         $(document).ready(function () {
-            /** Get Sub category list on change on parent category */
-            $('#category_id').on('change', function () {
-                var idCategory = this.value;
-                $("#sub_category_id").html('');
+            /** Get category list on change on type */
+            $('#type').on('change', function () {
+                var idType = this.value;
+                $("#category_id").html('');
 
                 $.ajax({
-                    url: "{{url('admin/blogs/fetch_subcategory')}}",
+                    url: "{{url('admin/blogs/fetch_category')}}",
                     type: "POST",
                     data: {
-                        category_id: idCategory,
+                        type: idType,
                         _token: '{{csrf_token()}}'
                     },
                     dataType: 'json',
 
                     success: function (result) {
-                        $('#sub_category_id').html('<option value="">Choose Sub Catyegory</option>');
+                        $('#category_id').html('<option value="">Choose Catyegory</option>');
 
-                        $.each(result.sub_categories, function (key, value) {
-                            $("#sub_category_id").append('<option value="' + value
+                        $.each(result.categories, function (key, value) {
+                            $("#category_id").append('<option value="' + value
                                 .id + '">' + value.title + '</option>');
                         });
                     }
                 });
             });
         });
+        
     </script>
 @endsection

@@ -33,52 +33,35 @@
                                     @endif
                                 </div>
 
-                                <div class="col-md-8">
+                                <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Category Name </label>
+                                        <label>Category Name <span class="text-danger">*</span> </label>
                                         <input type="text" class="form-control" name="title" required> 
                                     </div>
                                 </div>
-                    
-                                <div class="col-md-4">
+
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Status </label>
+                                        <label>Type <span class="text-danger">*</span> </label>
+                                        <select class="form-control" name="type" id="type">
+                                            <option value="">Select Type</option>
+                                            <option value="blog">Blog</option>
+                                            <option value="news">News</option>
+                                            <option value="event">Event</option>
+                                            <option value="case_study">Case Study</option>
+                                        </select> 
+                                    </div>
+                                </div>
+                    
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Status <span class="text-danger">*</span> </label>
                                         <select class=" form-control" id="status" name="status" required>
                                             <option value="1" selected>Active</option>
                                             <option value="0">Inactive</option>
                                         </select> 
                                     </div>
                                 </div>
-                        
-                                <!-- <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Identity Proof No.</label>
-                                        <input type="text" class="form-control"> 
-                                    </div>
-                                </div>
-                        
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Skills</label>
-                                        <input type="text" class="form-control"> 
-                                    </div>
-                                </div>
-                            
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Hiring Date</label>
-                                        <div class="cal-icon">
-                                            <input type="text" class="form-control datetimepicker"> 
-                                        </div> 
-                                    </div>
-                                </div>
-                        
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Address</label>
-                                        <textarea class="form-control" rows="2"></textarea>
-                                    </div>
-                                </div>  -->
 
                             </div>	
                             <button type="submit" class="btn btn-primary buttonedit1">Add</button>

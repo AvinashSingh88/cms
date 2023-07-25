@@ -5,9 +5,9 @@ use Illuminate\Http\Request;
 Interface BlogRepositoryInterface{
     
     public function allBlogs();
-    public function getCategoryList();
+    public function getCategoryList($type);
     public function getCountryList();
-    public function getSubCategoryList($category_id);
+    // public function getSubCategoryList($category_id);
     public function storeBlog($request, $data);
     public function findBlog($id);
     public function updateBlog($data, $id); 

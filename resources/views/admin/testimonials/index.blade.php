@@ -32,6 +32,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>name</th>
+                                        <th>Title</th>
                                         <th>message</th>
                                         <th>Status</th>
                                         <th>Created At</th>
@@ -43,6 +44,7 @@
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $value->name }}</td>
+                                        <td>{{ $value->designation }}</td>
                                         <td>{{ $value->message }}</td>
                                         <td>
                                             <div class="actions"> @if($value->status == 1) <a href="#" class="btn btn-sm bg-success-light mr-2">Active</a> @else <a href="#" class="btn btn-sm bg-danger-light mr-2">Inactive</a> @endif </div>

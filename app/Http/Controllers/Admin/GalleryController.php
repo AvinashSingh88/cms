@@ -48,7 +48,7 @@ class GalleryController extends Controller
     {
         $data = $request->validate([
             'category_id' => 'required',
-            'title' => 'required|string|max:255',
+            'description' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             // 'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'status' => 'required',
@@ -104,10 +104,9 @@ class GalleryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
         $data = $request->validate([
             'category_id' => 'required|not_in:0',
-            'title' => 'required|string|max:255',
+            'description' => 'required',
             // 'blog_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             // 'banner_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'status' => 'required',
